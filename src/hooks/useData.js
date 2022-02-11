@@ -9,12 +9,6 @@ const useData = () => {
       .then((data) => setEmployees(data));
   }, []);
 
-  // get login employees
-  useEffect(() => {
-    fetch(`http://localhost:5000/user?isLogin=${true}`)
-      .then((res) => res.json())
-      .then((data) => console.log(data));
-  }, []);
   return { employees };
 };
 

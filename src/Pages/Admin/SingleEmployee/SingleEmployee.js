@@ -16,7 +16,11 @@ const SingleEmployee = ({ employee }) => {
         body: JSON.stringify({ approveStatus: "Approved" }),
       })
         .then((res) => res.json())
-        .then((data) => console.log(data));
+        .then((result) => {
+          if (result.acknowledged) {
+            alert("Update successfully");
+          }
+        });
     }
   };
   const handleReject = () => {
@@ -31,7 +35,11 @@ const SingleEmployee = ({ employee }) => {
         body: JSON.stringify({ approveStatus: "Reject" }),
       })
         .then((res) => res.json())
-        .then((data) => console.log(data));
+        .then((result) => {
+          if (result.acknowledged) {
+            alert("Update successfully");
+          }
+        });
     }
   };
 
@@ -41,7 +49,7 @@ const SingleEmployee = ({ employee }) => {
       <h2>Email: {email}</h2>
       <h3>Status: {approveStatus}</h3>
       <h6>User Id: {user_id}</h6>
-      {!approveStatus === "Reject" && (
+      {approveStatus !== "Reject" && (
         <>
           <button onClick={handleApprove}>Approve</button>
           <button onClick={handleReject}>Reject</button>

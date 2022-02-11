@@ -59,7 +59,6 @@ const useFirebase = () => {
       .then(() => {
         loginStatusChange(uid, { isLogin: "false" });
         console.log("logout");
-        setUser({});
       })
       .catch((error) => {
         // An error happened.
