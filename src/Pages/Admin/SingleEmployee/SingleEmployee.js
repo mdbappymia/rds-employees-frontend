@@ -64,7 +64,7 @@ const SingleEmployee = ({
   return (
     <div className="border-4 my-3 p-5 border-green-700 rounded-lg bg-black text-white">
       <div className="lg:flex justify-between">
-        <div className="left w-1/2">
+        <div className="left lg:w-1/2">
           <img
             className="single-employee-img"
             src={employeeInfo?.photoURL}
@@ -77,12 +77,12 @@ const SingleEmployee = ({
           <h1>Role Description: {employeeInfo?.role.roleDes}</h1>
           <h1>NID no: {employeeInfo?.nid}</h1>
         </div>
-        <div className="right w-1/2 ">
+        <div className="right lg:w-1/2 ">
           <h1>Address: {employeeInfo.address}</h1>
           <h1>Blood Group: {employeeInfo?.bloodGroup}</h1>
           <h3>Status: {approveStatus}</h3>
           <h1>Joining Date: {employeeInfo?.joiningDate}</h1>
-          <h1>Joining Date: {employeeInfo?.resignDate}</h1>
+          <h1>Resign Date: {employeeInfo?.resignDate}</h1>
           <h1>Salary: {employeeInfo?.salary} TK</h1>
           <p>About Info:</p>
           <p className=" font-thin text-gray-300 text-xl">

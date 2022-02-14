@@ -9,7 +9,7 @@ const useData = () => {
       .then((data) => setEmployees(data));
   }, []);
 
-  return { employees };
+  return { employees, setEmployees };
 };
 
 export default useData;

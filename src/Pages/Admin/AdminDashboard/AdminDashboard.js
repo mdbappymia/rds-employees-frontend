@@ -37,7 +37,7 @@ const AdminDashboard = () => {
         {/* <!-- sidebar --> */}
         <div
           onClick={() => setOpenNav(false)}
-          className={`sidebar bg-black z-50 text-blue-100 w-64 space-y-6 py-7 px-2 absolute inset-y-0 left-0 transform  md:relative md:translate-x-0 transition duration-200 ease-in-out ${
+          className={`sidebar bg-black z-40 text-blue-100 w-64 space-y-6 py-7 px-2 absolute inset-y-0 left-0 transform  md:relative md:translate-x-0 transition duration-200 ease-in-out ${
             !openNav ? "-translate-x-full" : ""
           }`}
         >
@@ -109,7 +109,7 @@ const AdminDashboard = () => {
         </div>
 
         {/* <!-- content --> */}
-        <div className="flex-1 lg:p-10 sm:p-3 text-2xl">
+        <div className="flex-1 lg:p-10 sm:p-3 text-xl">
           <Outlet />
         </div>
       </div>

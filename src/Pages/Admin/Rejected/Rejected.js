@@ -10,7 +10,9 @@ const Rejected = () => {
   }, []);
   return (
     <div>
-      <h3>This is rejected user</h3>
+      <h3 className="text-center font-bold text-4xl border-4 p-3 my-3 uppercase hover:bg-gray-400">
+        rejected users
+      </h3>
       {rejected.map((rejectUser) => (
         <SingleEmployee employee={rejectUser} />
       ))}

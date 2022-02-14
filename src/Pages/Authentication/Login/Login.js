@@ -54,14 +54,14 @@ const Login = () => {
   };
   return (
     <>
-      <div className="py-5 mx-2">
+      <div className="py-5 mx-2 flex justify-center items-center min-h-screen">
         <div className="lg:w-1/3 m-auto">
           <h1 className="text-4xl text-center font-bold uppercase">
             {isRegister ? "Register" : "Login"}
           </h1>
           {error && <p className="text-center text-red-600 my-8">{error}</p>}
           <form onSubmit={handleSubmit(onSubmit)}>
-            <label>Email:</label>
+            <label>Email: *</label>
             <input
               className="border-2 border-black w-full my-3 p-2 text-2xl rounded-md"
               placeholder="Enter your email"
@@ -73,7 +73,7 @@ const Login = () => {
             <br />
             {isRegister && (
               <>
-                <label>Name:</label>
+                <label>Name: *</label>
                 <input
                   className="border-2 border-black w-full my-3 p-2 text-2xl rounded-md"
                   placeholder="Your Name"
@@ -83,7 +83,7 @@ const Login = () => {
                   <span className="text-red-500">This field is required</span>
                 )}
                 <br />
-                <label>Photo Url:</label>
+                <label>Photo Url: *</label>
                 <input
                   className="border-2 border-black w-full my-3 p-2 text-2xl rounded-md"
                   placeholder="Photo URL"
@@ -93,7 +93,7 @@ const Login = () => {
                   <span className="text-red-500">This field is required</span>
                 )}
                 <br />
-                <label>Role Id:</label>
+                <label>Role Id: *</label>
                 <input
                   className="border-2 border-black w-full my-3 p-2 text-2xl rounded-md"
                   placeholder="Role ID"
@@ -103,7 +103,7 @@ const Login = () => {
                   <span className="text-red-500">This field is required</span>
                 )}
                 <br />
-                <label>Role Description:</label>
+                <label>Role Description: *</label>
                 <input
                   className="border-2 border-black w-full my-3 p-2 text-2xl rounded-md"
                   placeholder="Role Description"
@@ -113,7 +113,7 @@ const Login = () => {
                   <span className="text-red-500">This field is required</span>
                 )}
                 <br />
-                <label>Employee ID:</label>
+                <label>Employee ID: *</label>
                 <input
                   className="border-2 border-black w-full my-3 p-2 text-2xl rounded-md"
                   placeholder="Employee ID"
@@ -123,7 +123,7 @@ const Login = () => {
                   <span className="text-red-500">This field is required</span>
                 )}
                 <br />
-                <label>About:</label>
+                <label>About: *</label>
                 <textarea
                   rows={4}
                   className="border-2 border-black w-full my-3 p-2 text-2xl rounded-md"
@@ -134,7 +134,7 @@ const Login = () => {
                   <span className="text-red-500">This field is required</span>
                 )}
                 <br />
-                <label>Joining Date:</label>
+                <label>Joining Date: *</label>
                 <input
                   className="border-2 border-black w-full my-3 p-2 text-2xl rounded-md"
                   placeholder="Joining Date"
@@ -153,7 +153,7 @@ const Login = () => {
                   {...register("resignDate")}
                 />
                 <br />
-                <label>Salary:</label>
+                <label>Salary: *</label>
                 <input
                   className="border-2 border-black w-full my-3 p-2 text-2xl rounded-md"
                   placeholder="Salary"
@@ -164,7 +164,7 @@ const Login = () => {
                   <span className="text-red-500">This field is required</span>
                 )}
                 <br />
-                <label>Address:</label>
+                <label>Address: *</label>
                 <input
                   className="border-2 border-black w-full my-3 p-2 text-2xl rounded-md"
                   placeholder="Address"
@@ -174,7 +174,7 @@ const Login = () => {
                   <span className="text-red-500">This field is required</span>
                 )}
                 <br />
-                <label>Blood Group</label>
+                <label>Blood Group: *</label>
                 <input
                   className="border-2 border-black w-full my-3 p-2 text-2xl rounded-md"
                   placeholder="Blood Group"
@@ -184,7 +184,7 @@ const Login = () => {
                   <span className="text-red-500">This field is required</span>
                 )}
                 <br />
-                <label>NID:</label>
+                <label>NID: *</label>
                 <input
                   className="border-2 border-black w-full my-3 p-2 text-2xl rounded-md"
                   placeholder="NID"
@@ -197,7 +197,7 @@ const Login = () => {
                 <br />
               </>
             )}
-            <label>Password:</label>
+            <label>Password: *</label>
             <input
               className="border-2 border-black w-full my-3 p-2 text-2xl rounded-md"
               placeholder="Your Password"

@@ -1,12 +1,12 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import useStore from "../../../hooks/useStore";
 
 const AppBar = () => {
   const [navbarOpen, setNavbarOpen] = React.useState(false);
   const { user, logOut } = useStore();
   return (
-    <div>
+    <div className="appbar sticky top-0 z-50">
       <nav className="relative flex flex-wrap items-center justify-between px-2 py-3 bg-black">
         <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
           <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
@@ -33,42 +33,42 @@ const AppBar = () => {
           >
             <ul className="flex flex-col lg:flex-row list-none lg:ml-auto">
               <li className="nav-item">
-                <Link
+                <NavLink
                   className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
                   to="/"
                 >
                   <i className="fas fa-home text-lg leading-lg text-white opacity-75"></i>
                   <span className="ml-2">Home</span>
-                </Link>
+                </NavLink>
               </li>
               <li className="nav-item">
-                <Link
+                <NavLink
                   className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
                   to="/employees"
                 >
-                  <i className="fab fa-twitter text-lg leading-lg text-white opacity-75"></i>
+                  <i className="fa fa-users text-lg leading-lg text-white opacity-75"></i>
                   <span className="ml-2">Employees</span>
-                </Link>
+                </NavLink>
               </li>
               <li className="nav-item">
                 {user.email && (
-                  <Link
+                  <NavLink
                     className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
                     to="/adminDashboard"
                   >
                     <i className="fas fa-columns text-lg leading-lg text-white opacity-75"></i>
                     <span className="ml-2">Admin Dashboard</span>
-                  </Link>
+                  </NavLink>
                 )}
               </li>
               <li className="nav-item">
-                <Link
+                <NavLink
                   className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
                   to="/about"
                 >
                   <i className="fas fa-address-book text-lg leading-lg text-white opacity-75"></i>
                   <span className="ml-2">About</span>
-                </Link>
+                </NavLink>
               </li>
               {user.email ? (
                 <button

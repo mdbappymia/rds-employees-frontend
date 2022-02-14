@@ -10,8 +10,8 @@ const WaitingApproval = () => {
   }, []);
   return (
     <div>
-      <h1 className="text-center text-4xl font-bold uppercase border-4 p-5">
-        Waiting Approval
+      <h1 className="text-center text-4xl font-bold uppercase border-4 p-5 hover:bg-gray-400">
+        Waiting for Approval
       </h1>
       {pendingEmployees.map((pendingEmployee) => (
         <SingleEmployee
