@@ -4,8 +4,11 @@ import { useLocation, useNavigate } from "react-router-dom";
 import useStore from "../../../hooks/useStore";
 
 const Login = () => {
-  const { createUserUsingEmailAndPassword, signInUsingEmailAndPassword } =
-    useStore();
+  const {
+    createUserUsingEmailAndPassword,
+    signInUsingEmailAndPassword,
+    error,
+  } = useStore();
   const [isRegister, setIsRegister] = useState(false);
 
   const navigate = useNavigate();
@@ -56,7 +59,7 @@ const Login = () => {
           <h1 className="text-4xl text-center font-bold uppercase">
             {isRegister ? "Register" : "Login"}
           </h1>
-
+          {error && <p className="text-center text-red-600 my-8">{error}</p>}
           <form onSubmit={handleSubmit(onSubmit)}>
             <label>Email:</label>
             <input
