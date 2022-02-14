@@ -14,7 +14,12 @@ const WaitingApproval = () => {
         Waiting Approval
       </h1>
       {pendingEmployees.map((pendingEmployee) => (
-        <SingleEmployee key={pendingEmployee._id} employee={pendingEmployee} />
+        <SingleEmployee
+          key={pendingEmployee._id}
+          employee={pendingEmployee}
+          setPendingEmployees={setPendingEmployees}
+          pendingEmployees={pendingEmployees}
+        />
       ))}
     </div>
   );

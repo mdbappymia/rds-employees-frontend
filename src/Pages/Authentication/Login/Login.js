@@ -32,7 +32,7 @@ const Login = () => {
       },
       employeeId: data.employeeId,
       about: data.about,
-      joiningData: data.joiningDate,
+      joiningDate: data.joiningDate,
       resignDate: data.resignDate || "Present",
       salary: data.salary,
       address: data.address,

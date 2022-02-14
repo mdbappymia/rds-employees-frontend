@@ -46,7 +46,6 @@ const AppBar = () => {
                   className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
                   to="/employees"
                 >
-                  <i class="fab fa-user-group"></i>
                   <i className="fab fa-twitter text-lg leading-lg text-white opacity-75"></i>
                   <span className="ml-2">Employees</span>
                 </Link>

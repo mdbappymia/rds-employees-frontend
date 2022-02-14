@@ -2,6 +2,7 @@ import React from "react";
 
 const Employee = ({ employee }) => {
   const { displayName, email, role, approveStatus, isLogin } = employee;
+  console.log(employee);
   return (
     <div>
       <h3>Name: {displayName}</h3>

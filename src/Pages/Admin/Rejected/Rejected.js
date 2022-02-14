@@ -8,7 +8,6 @@ const Rejected = () => {
       .then((res) => res.json())
       .then((data) => setRejected(data));
   }, []);
-  console.log(rejected);
   return (
     <div>
       <h3>This is rejected user</h3>

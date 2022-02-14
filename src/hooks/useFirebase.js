@@ -16,7 +16,6 @@ const useFirebase = () => {
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(true);
 
-  console.log(user);
   const auth = getAuth();
   // ========= Create a user =========
   const createUserUsingEmailAndPassword = (
