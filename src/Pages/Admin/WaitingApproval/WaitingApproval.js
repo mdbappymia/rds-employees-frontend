@@ -10,6 +10,9 @@ const WaitingApproval = () => {
   }, []);
   return (
     <div>
+      <h1 className="text-center text-4xl font-bold uppercase border-4 p-5">
+        Waiting Approval
+      </h1>
       {pendingEmployees.map((pendingEmployee) => (
         <SingleEmployee key={pendingEmployee._id} employee={pendingEmployee} />
       ))}

@@ -19,17 +19,24 @@ const useFirebase = () => {
   console.log(user);
   const auth = getAuth();
   // ========= Create a user =========
-  const createUserUsingEmailAndPassword = (email, password, name, navigate) => {
+  const createUserUsingEmailAndPassword = (
+    email,
+    password,
+    name,
+    employeeInfo,
+    navigate
+  ) => {
     setIsLoading(true);
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
         setUser(user);
         if (user.email) {
-          saveUser(user.email, name, user.uid);
+          saveUser(user.email, name, user.uid, employeeInfo);
         }
         updateProfile(auth.currentUser, {
           displayName: name,
+          photoURL: employeeInfo.photoURL,
         }).then(() => {});
         navigate("/");
       })
@@ -78,10 +85,11 @@ const useFirebase = () => {
   }, [auth]);
 
   // =============save user to database =============
-  const saveUser = (email, displayName, user_id) => {
+  const saveUser = (email, displayName, user_id, employeeInfo) => {
     const user = {
       email,
       displayName,
+      employeeInfo,
       user_id,
       role: "User",
       isLogin: "true",
