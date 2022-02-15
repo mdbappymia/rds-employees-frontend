@@ -16,7 +16,6 @@ const useFirebase = () => {
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(true);
 
-  console.log(user);
   const auth = getAuth();
   // ========= Create a user =========
   const createUserUsingEmailAndPassword = (
@@ -48,7 +47,8 @@ const useFirebase = () => {
       })
       .catch((error) => {
         setError(error.message);
-      });
+      })
+      .finally(() => setIsLoading(false));
   };
   //   ========= Sign in user ==========
   const signInUsingEmailAndPassword = (email, password, navigate, from) => {
@@ -61,7 +61,8 @@ const useFirebase = () => {
       })
       .catch((error) => {
         setError(error.message);
-      });
+      })
+      .finally(() => setIsLoading(false));
   };
   // ============= Sign Out ===================
   const logOut = () => {
@@ -87,11 +88,12 @@ const useFirebase = () => {
           });
       } else {
         setUser({});
+        setIsLoading(false);
       }
     });
     return () => unsubscribed();
   }, [auth]);
-  console.log(user);
+
   // =============save user to database =============
   const saveUser = (email, displayName, user_id, employeeInfo) => {
     const user = {
@@ -111,8 +113,9 @@ const useFirebase = () => {
       body: JSON.stringify(user),
     })
       .then((res) => res.json())
-      .then((data) => console.log(data));
+      .then((data) => {});
   };
+
   // ===============Login Status Change==============
   const loginStatusChange = (uid, data) => {
     fetch(`http://localhost:5000/users/${uid}`, {

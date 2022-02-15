@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useReducer, useState } from "react";
 import { useForm } from "react-hook-form";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import useStore from "../../../hooks/useStore";
 
 const Login = () => {
@@ -8,6 +8,8 @@ const Login = () => {
     createUserUsingEmailAndPassword,
     signInUsingEmailAndPassword,
     error,
+    isLoading,
+    user,
   } = useStore();
   const [isRegister, setIsRegister] = useState(false);
 
@@ -51,6 +53,12 @@ const Login = () => {
       signInUsingEmailAndPassword(data.email, data.password, navigate, from);
     }
   };
+  if (isLoading) {
+    return <h1 style={{ height: "100vh", textAlign: "center" }}>Loading...</h1>;
+  }
+  if (user.email) {
+    return <Navigate to="/" />;
+  }
   return (
     <>
       <div className="py-5 mx-2 flex justify-center items-center min-h-screen">

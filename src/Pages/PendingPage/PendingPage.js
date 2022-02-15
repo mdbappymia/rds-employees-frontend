@@ -3,12 +3,15 @@ import { Navigate } from "react-router-dom";
 import useStore from "../../hooks/useStore";
 
 const PendingPage = () => {
-  const { user } = useStore();
+  const { user, isLoading } = useStore();
   if (user.approveStatus === "Reject") {
     return <Navigate to="/rejected" />;
   }
-  if (user.approveStatus === "Approved") {
+  if (user.approveStatus === "Approved" || !user.email) {
     return <Navigate to="/" />;
+  }
+  if (isLoading) {
+    return <h1 style={{ height: "100vh", textAlign: "center" }}>Loading...</h1>;
   }
   return (
     <div className="min-h-screen">

@@ -70,19 +70,21 @@ const AppBar = () => {
                   <span className="ml-2">About</span>
                 </NavLink>
               </li>
-              <li className="nav-item">
-                <NavLink
-                  className="px-3 py-2 pt-1 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
-                  to="/profile"
-                >
-                  <img
-                    style={{ height: 35, width: 35, borderRadius: "50%" }}
-                    src={user?.photoURL}
-                    alt=""
-                  />
-                  <span className="ml-2">Profile</span>
-                </NavLink>
-              </li>
+              {user.email && (
+                <li className="nav-item">
+                  <NavLink
+                    className="px-3 py-2 pt-1 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
+                    to="/profile"
+                  >
+                    <img
+                      style={{ height: 35, width: 35, borderRadius: "50%" }}
+                      src={user?.photoURL}
+                      alt=""
+                    />
+                    <span className="ml-2">Profile</span>
+                  </NavLink>
+                </li>
+              )}
               {user.email ? (
                 <button
                   onClick={logOut}

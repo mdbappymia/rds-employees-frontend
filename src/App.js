@@ -18,6 +18,7 @@ import PrivetRoute from "./Pages/Authentication/PrivetRoute/PrivetRoute";
 import PendingPage from "./Pages/PendingPage/PendingPage";
 import RejectedPage from "./Pages/RejectedPage/RejectedPage";
 import AdminRoute from "./Pages/Authentication/AdminRoute/AdminRoute";
+import EmployeeDetails from "./Pages/EmployeeDetails/EmployeeDetails";
 
 const App = () => {
   return (
@@ -59,6 +60,14 @@ const App = () => {
           <Route path="adminManagement" element={<ManageAdmin />} />
           <Route path="updateEmployee/:user_id" element={<UpdateEmployee />} />
         </Route>
+        <Route
+          path="/employeeDetails/:user_id"
+          element={
+            <PrivetRoute>
+              <EmployeeDetails />
+            </PrivetRoute>
+          }
+        />
         <Route path="/pending" element={<PendingPage />} />
         <Route path="/rejected" element={<RejectedPage />} />
         <Route path="*" element={<Navigate replace to="/" />} />
