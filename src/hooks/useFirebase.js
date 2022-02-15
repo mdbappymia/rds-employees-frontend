@@ -16,6 +16,7 @@ const useFirebase = () => {
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(true);
 
+  console.log(user);
   const auth = getAuth();
   // ========= Create a user =========
   const createUserUsingEmailAndPassword = (
@@ -29,20 +30,25 @@ const useFirebase = () => {
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
-        setUser(user);
+
         if (user.email) {
           saveUser(user.email, name, user.uid, employeeInfo);
         }
         updateProfile(auth.currentUser, {
           displayName: name,
           photoURL: employeeInfo.photoURL,
-        }).then(() => {});
-        navigate("/");
+        }).then(() => {
+          setUser({
+            ...user,
+            photoURL: employeeInfo.photoURL,
+            employeeInfo: employeeInfo,
+          });
+          navigate("/");
+        });
       })
       .catch((error) => {
         setError(error.message);
-      })
-      .finally(() => setIsLoading(false));
+      });
   };
   //   ========= Sign in user ==========
   const signInUsingEmailAndPassword = (email, password, navigate, from) => {
@@ -55,8 +61,7 @@ const useFirebase = () => {
       })
       .catch((error) => {
         setError(error.message);
-      })
-      .finally(() => setIsLoading(false));
+      });
   };
   // ============= Sign Out ===================
   const logOut = () => {
@@ -74,15 +79,19 @@ const useFirebase = () => {
   useEffect(() => {
     const unsubscribed = onAuthStateChanged(auth, (user) => {
       if (user) {
-        setUser(user);
+        fetch(`http://localhost:5000/users/${user.uid}`)
+          .then((res) => res.json())
+          .then((data) => {
+            setUser({ ...user, ...data });
+            setIsLoading(false);
+          });
       } else {
         setUser({});
       }
-      setIsLoading(false);
     });
-    return () => unsubscribed;
+    return () => unsubscribed();
   }, [auth]);
-
+  console.log(user);
   // =============save user to database =============
   const saveUser = (email, displayName, user_id, employeeInfo) => {
     const user = {
@@ -116,8 +125,10 @@ const useFirebase = () => {
   };
   // =============Return all usable part ==============
   return {
+    auth,
     error,
     user,
+    setUser,
     createUserUsingEmailAndPassword,
     signInUsingEmailAndPassword,
     isLoading,

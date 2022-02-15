@@ -13,17 +13,44 @@ import ManageAdmin from "./Pages/Admin/ManageAdmin/ManageAdmin";
 import Footer from "./Pages/Shared/Footer/Footer";
 import UpdateEmployee from "./Pages/Admin/UpdateEmployee/UpdateEmployee";
 import About from "./Pages/About/About";
+import ProfileHome from "./Pages/Profile/ProfileHome/ProfileHome";
+import PrivetRoute from "./Pages/Authentication/PrivetRoute/PrivetRoute";
+import PendingPage from "./Pages/PendingPage/PendingPage";
+import RejectedPage from "./Pages/RejectedPage/RejectedPage";
+import AdminRoute from "./Pages/Authentication/AdminRoute/AdminRoute";
 
 const App = () => {
   return (
     <BrowserRouter>
       <AppBar />
       <Routes>
-        <Route path="/" element={<HomePage />} />
+        <Route
+          path="/"
+          element={
+            <PrivetRoute>
+              <HomePage />
+            </PrivetRoute>
+          }
+        />
         <Route path="/login" element={<Login />} />
-        <Route path="/employees" element={<Employees />} />
+        <Route
+          path="/employees"
+          element={
+            <PrivetRoute>
+              <Employees />
+            </PrivetRoute>
+          }
+        />
         <Route path="/about" element={<About />} />
-        <Route path="/adminDashboard" element={<AdminDashboard />}>
+        <Route path="/profile" element={<ProfileHome />} />
+        <Route
+          path="/adminDashboard"
+          element={
+            <AdminRoute>
+              <AdminDashboard />
+            </AdminRoute>
+          }
+        >
           <Route index={true} element={<EmployeeManagement />} />
           <Route path="employeeManagement" element={<EmployeeManagement />} />
           <Route path="waitingApproval" element={<WaitingApproval />} />
@@ -32,6 +59,8 @@ const App = () => {
           <Route path="adminManagement" element={<ManageAdmin />} />
           <Route path="updateEmployee/:user_id" element={<UpdateEmployee />} />
         </Route>
+        <Route path="/pending" element={<PendingPage />} />
+        <Route path="/rejected" element={<RejectedPage />} />
         <Route path="*" element={<Navigate replace to="/" />} />
       </Routes>
       <Footer />

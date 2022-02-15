@@ -40,7 +40,6 @@ const Login = () => {
       nid: data.nid,
     };
     if (isRegister) {
-      console.log(data);
       createUserUsingEmailAndPassword(
         data.email,
         data.password,

@@ -34,7 +34,7 @@ const AppBar = () => {
             <ul className="flex flex-col lg:flex-row list-none lg:ml-auto">
               <li className="nav-item">
                 <NavLink
-                  className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
+                  className="px-3 py-3 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
                   to="/"
                 >
                   <i className="fas fa-home text-lg leading-lg text-white opacity-75"></i>
@@ -43,7 +43,7 @@ const AppBar = () => {
               </li>
               <li className="nav-item">
                 <NavLink
-                  className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
+                  className="px-3 py-3 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
                   to="/employees"
                 >
                   <i className="fa fa-users text-lg leading-lg text-white opacity-75"></i>
@@ -53,7 +53,7 @@ const AppBar = () => {
               <li className="nav-item">
                 {user.email && (
                   <NavLink
-                    className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
+                    className="px-3 py-3 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
                     to="/adminDashboard"
                   >
                     <i className="fas fa-columns text-lg leading-lg text-white opacity-75"></i>
@@ -63,11 +63,24 @@ const AppBar = () => {
               </li>
               <li className="nav-item">
                 <NavLink
-                  className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
+                  className="px-5 py-3 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
                   to="/about"
                 >
                   <i className="fas fa-address-book text-lg leading-lg text-white opacity-75"></i>
                   <span className="ml-2">About</span>
+                </NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink
+                  className="px-3 py-2 pt-1 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
+                  to="/profile"
+                >
+                  <img
+                    style={{ height: 35, width: 35, borderRadius: "50%" }}
+                    src={user?.photoURL}
+                    alt=""
+                  />
+                  <span className="ml-2">Profile</span>
                 </NavLink>
               </li>
               {user.email ? (

@@ -1,0 +1,25 @@
+.profile-home-container {
+  position: relative;
+}
+.update-profile-component {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  padding: 0 200px;
+  background-color: aliceblue;
+  min-height: 100vh;
+}
+.cover {
+  position: relative;
+  /* min-height: 100vh; */
+}
+.user-profile-photo {
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+  border: 3px solid gray;
+  position: absolute;
+  margin: 10px;
+  background-color: black;
+  top: 0;
+}

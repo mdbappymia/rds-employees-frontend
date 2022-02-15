@@ -7,6 +7,7 @@ const UpdateEmployee = () => {
   const [singleEmployee, setSingleEmployee] = useState({});
   const { user_id } = useParams();
   const { employees, setEmployees } = useStore();
+
   useEffect(() => {
     fetch(`http://localhost:5000/users/${user_id}`)
       .then((res) => res.json())
@@ -14,14 +15,9 @@ const UpdateEmployee = () => {
         setSingleEmployee(data);
       });
   }, [user_id]);
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
+  const { register, handleSubmit } = useForm();
 
   const onSubmit = (data) => {
-    console.log(data);
     const employeeInfo = {
       photoURL: data.photoURL || singleEmployee.employeeInfo.photoURL,
       role: {
@@ -38,8 +34,6 @@ const UpdateEmployee = () => {
       nid: data.nid || singleEmployee.employeeInfo.nid,
     };
     const updateData = {
-      displayName: data.name || singleEmployee.displayName,
-      email: data.email || singleEmployee.email,
       employeeInfo: {
         ...employeeInfo,
       },
@@ -79,7 +73,8 @@ const UpdateEmployee = () => {
           <form onSubmit={handleSubmit(onSubmit)}>
             <label>Name:</label>
             <input
-              className="border-2 border-black w-full my-3 p-2 text-2xl rounded-md"
+              disabled
+              className="border-2 border-black w-full my-3 p-2 text-2xl rounded-md bg-gray-200"
               placeholder="Name"
               defaultValue={singleEmployee?.displayName}
               {...register("name")}
@@ -87,7 +82,8 @@ const UpdateEmployee = () => {
             <br />
             <label>Photo URL:</label>
             <input
-              className="border-2 border-black w-full my-3 p-2 text-2xl rounded-md"
+              disabled
+              className="border-2 border-black w-full my-3 p-2 text-2xl rounded-md bg-gray-200"
               defaultValue={singleEmployee?.employeeInfo?.photoURL}
               placeholder="Photo URL"
               {...register("photoURL")}
@@ -95,13 +91,13 @@ const UpdateEmployee = () => {
             <br />
             <label>Email:</label>
             <input
-              className="border-2 border-black w-full my-3 p-2 text-2xl rounded-md"
+              disabled
+              className="border-2 border-black w-full my-3 p-2 text-2xl rounded-md bg-gray-200"
               defaultValue={singleEmployee?.email}
               placeholder="Enter your email"
               type="email"
               {...register("email")}
             />
-            {errors.email && <span>This field is required</span>}
             <br />
             <label>Role ID:</label>
             <input
@@ -117,7 +113,7 @@ const UpdateEmployee = () => {
               placeholder="Role Description"
               {...register("roleDes")}
             />
-            {errors.role && <span>This field is required</span>}
+
             <br />
             <label>Employee ID:</label>
             <input
@@ -126,7 +122,7 @@ const UpdateEmployee = () => {
               placeholder="Employee ID"
               {...register("employeeId")}
             />
-            {errors.employeeId && <span>This field is required</span>}
+
             <br />
             <label>About:</label>
             <textarea
@@ -144,7 +140,7 @@ const UpdateEmployee = () => {
               defaultValue={singleEmployee?.employeeInfo?.address}
               {...register("address")}
             />
-            {errors.address && <span>This field is required</span>}
+
             <br />
             <label>Joining Date:</label>
             <input
@@ -154,7 +150,7 @@ const UpdateEmployee = () => {
               type="date"
               {...register("joiningDate")}
             />
-            {errors.joiningDate && <span>This field is required</span>}
+
             <br />
             <label>Resign Date:</label>
             <input
