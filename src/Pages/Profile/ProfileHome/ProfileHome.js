@@ -4,8 +4,9 @@ import UpdateProfile from "../UpdateProfile/UpdateProfile";
 import "./ProfileHome.css";
 
 const ProfileHome = () => {
-  const { user } = useStore();
+  const { user, employees } = useStore();
   const [updateShow, setUpdateShow] = useState(false);
+  console.log(employees);
   return (
     <div className="container mx-auto px-4 min-h-screen profile-home-container">
       <h1 className="text-center uppercase text-5xl font-bold my-3 py-3 border-4 hover:bg-gray-400">
@@ -49,7 +50,7 @@ const ProfileHome = () => {
         </h1>
         <h1>
           <span className="font-bold">Joining Date:</span>{" "}
-          {user?.employeeInfo?.joiningDate}
+          {new Date(user?.employeeInfo?.joiningDate).toDateString()}
         </h1>
         <h1>
           <span className="font-bold">Resign Date:</span>{" "}

@@ -15,7 +15,6 @@ const useFirebase = () => {
   const [user, setUser] = useState({});
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(true);
-
   const auth = getAuth();
   // ========= Create a user =========
   const createUserUsingEmailAndPassword = (
@@ -84,8 +83,8 @@ const useFirebase = () => {
           .then((res) => res.json())
           .then((data) => {
             setUser({ ...user, ...data });
-            setIsLoading(false);
-          });
+          })
+          .finally(() => setIsLoading(false));
       } else {
         setUser({});
         setIsLoading(false);

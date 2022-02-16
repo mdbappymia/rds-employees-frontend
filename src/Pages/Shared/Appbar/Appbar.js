@@ -51,7 +51,7 @@ const AppBar = () => {
                 </NavLink>
               </li>
               <li className="nav-item">
-                {user.email && (
+                {user.role === "Admin" && (
                   <NavLink
                     className="px-3 py-3 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
                     to="/adminDashboard"

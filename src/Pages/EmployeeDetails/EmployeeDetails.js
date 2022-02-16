@@ -1,5 +1,5 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import useStore from "../../hooks/useStore";
 
 const EmployeeDetails = () => {
@@ -47,7 +47,7 @@ const EmployeeDetails = () => {
         </h1>
         <h1>
           <span className="font-bold">Joining Date:</span>{" "}
-          {employee[0]?.employeeInfo?.joiningDate}
+          {new Date(employee[0]?.employeeInfo?.joiningDate).toDateString()}
         </h1>
         <h1>
           <span className="font-bold">Resign Date:</span>{" "}
@@ -58,10 +58,15 @@ const EmployeeDetails = () => {
           {employee[0]?.employeeInfo?.address}
         </h1>
         <h1>
-          <span className="font-bold">About Me:</span>{" "}
+          <span className="font-bold">About:</span>{" "}
           {employee[0]?.employeeInfo?.about}
         </h1>
       </div>
+      <Link to="/">
+        <button className="mt-8 text-blue-900 font-bold text-xl">
+          &lt;&lt; Back to home
+        </button>
+      </Link>
     </div>
   );
 };

@@ -22,7 +22,9 @@ const ManageSingleEmployee = ({ employee }) => {
         <div className="right lg:w-2/3 ">
           <h1>Address: {employeeInfo.address}</h1>
           <h1>Blood Group: {employeeInfo?.bloodGroup}</h1>
-          <h1>Joining Date: {employeeInfo?.joiningDate}</h1>
+          <h1>
+            Joining Date: {new Date(employeeInfo?.joiningDate).toDateString()}
+          </h1>
           <h1>Resign Date: {employeeInfo?.resignDate}</h1>
           <h1>Salary: {employeeInfo?.salary} TK</h1>
           <p>About Info:</p>
