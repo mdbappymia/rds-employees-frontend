@@ -24,54 +24,59 @@ const App = () => {
   return (
     <BrowserRouter>
       <AppBar />
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <PrivetRoute>
-              <HomePage />
-            </PrivetRoute>
-          }
-        />
-        <Route path="/login" element={<Login />} />
-        <Route
-          path="/employees"
-          element={
-            <PrivetRoute>
-              <Employees />
-            </PrivetRoute>
-          }
-        />
-        <Route path="/about" element={<About />} />
-        <Route path="/profile" element={<ProfileHome />} />
-        <Route
-          path="/adminDashboard"
-          element={
-            <AdminRoute>
-              <AdminDashboard />
-            </AdminRoute>
-          }
-        >
-          <Route index={true} element={<EmployeeManagement />} />
-          <Route path="employeeManagement" element={<EmployeeManagement />} />
-          <Route path="waitingApproval" element={<WaitingApproval />} />
-          <Route path="rejected" element={<Rejected />} />
-          <Route path="loggedEmployees" element={<LoggedInEmployee />} />
-          <Route path="adminManagement" element={<ManageAdmin />} />
-          <Route path="updateEmployee/:user_id" element={<UpdateEmployee />} />
-        </Route>
-        <Route
-          path="/employeeDetails/:user_id"
-          element={
-            <PrivetRoute>
-              <EmployeeDetails />
-            </PrivetRoute>
-          }
-        />
-        <Route path="/pending" element={<PendingPage />} />
-        <Route path="/rejected" element={<RejectedPage />} />
-        <Route path="*" element={<Navigate replace to="/" />} />
-      </Routes>
+      <div className="h-85vh">
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <PrivetRoute>
+                <HomePage />
+              </PrivetRoute>
+            }
+          />
+          <Route path="/login" element={<Login />} />
+          <Route
+            path="/employees"
+            element={
+              <PrivetRoute>
+                <Employees />
+              </PrivetRoute>
+            }
+          />
+          <Route path="/about" element={<About />} />
+          <Route path="/profile" element={<ProfileHome />} />
+          <Route
+            path="/adminDashboard"
+            element={
+              <AdminRoute>
+                <AdminDashboard />
+              </AdminRoute>
+            }
+          >
+            <Route index={true} element={<EmployeeManagement />} />
+            <Route path="employeeManagement" element={<EmployeeManagement />} />
+            <Route path="waitingApproval" element={<WaitingApproval />} />
+            <Route path="rejected" element={<Rejected />} />
+            <Route path="loggedEmployees" element={<LoggedInEmployee />} />
+            <Route path="adminManagement" element={<ManageAdmin />} />
+            <Route
+              path="updateEmployee/:user_id"
+              element={<UpdateEmployee />}
+            />
+          </Route>
+          <Route
+            path="/employeeDetails/:user_id"
+            element={
+              <PrivetRoute>
+                <EmployeeDetails />
+              </PrivetRoute>
+            }
+          />
+          <Route path="/pending" element={<PendingPage />} />
+          <Route path="/rejected" element={<RejectedPage />} />
+          <Route path="*" element={<Navigate replace to="/" />} />
+        </Routes>
+      </div>
       <Footer />
     </BrowserRouter>
   );

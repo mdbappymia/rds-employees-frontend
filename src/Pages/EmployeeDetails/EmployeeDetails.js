@@ -7,7 +7,7 @@ const EmployeeDetails = () => {
   const { employees } = useStore();
   const employee = employees?.filter((emp) => emp.user_id === user_id);
   return (
-    <div className="container mx-auto px-4 min-h-screen profile-home-container">
+    <div className="container mx-auto px-4 profile-home-container">
       <h1 className="text-center uppercase text-5xl font-bold my-3 py-3 border-4 hover:bg-gray-400">
         Profile
       </h1>

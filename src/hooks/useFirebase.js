@@ -84,6 +84,7 @@ const useFirebase = () => {
           .then((res) => res.json())
           .then((data) => {
             setUser({ ...user, ...data });
+            setError("");
           })
           .finally(() => setIsLoading(false));
       } else {

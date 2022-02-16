@@ -1,14 +1,18 @@
 import React, { useState } from "react";
+import { Navigate } from "react-router-dom";
 import useStore from "../../../hooks/useStore";
 import UpdateProfile from "../UpdateProfile/UpdateProfile";
 import "./ProfileHome.css";
 
 const ProfileHome = () => {
-  const { user, employees } = useStore();
+  const { user } = useStore();
   const [updateShow, setUpdateShow] = useState(false);
-  console.log(employees);
+
+  if (!user.email) {
+    return <Navigate to="/login" />;
+  }
   return (
-    <div className="container mx-auto px-4 min-h-screen profile-home-container">
+    <div className="container mx-auto px-4 profile-home-container">
       <h1 className="text-center uppercase text-5xl font-bold my-3 py-3 border-4 hover:bg-gray-400">
         Profile
       </h1>

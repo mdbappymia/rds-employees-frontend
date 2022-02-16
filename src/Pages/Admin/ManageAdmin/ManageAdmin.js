@@ -5,27 +5,30 @@ import "./ManageAdmin.css";
 const ManageAdmin = () => {
   const { employees, setEmployees, user } = useStore();
   const handleAdmin = (user_id, role) => {
-    fetch(`http://localhost:5000/users/${user_id}`, {
-      method: "PUT",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify({ role: role }),
-    })
-      .then((res) => res.json())
-      .then((result) => {
-        if (result.acknowledged) {
-          let remaingEmpArr = [];
-          for (let emp of employees) {
-            if (emp.user_id === user_id) {
-              emp.role = role;
+    const isChanged = window.confirm("Are you sure?");
+    if (isChanged) {
+      fetch(`http://localhost:5000/users/${user_id}`, {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify({ role: role }),
+      })
+        .then((res) => res.json())
+        .then((result) => {
+          if (result.acknowledged) {
+            let remaingEmpArr = [];
+            for (let emp of employees) {
+              if (emp.user_id === user_id) {
+                emp.role = role;
+              }
+              remaingEmpArr.push(emp);
             }
-            remaingEmpArr.push(emp);
+            setEmployees(remaingEmpArr);
+            alert("Role Changed successfully");
           }
-          setEmployees(remaingEmpArr);
-          alert("Role Changed successfully");
-        }
-      });
+        });
+    }
   };
   return (
     <>
