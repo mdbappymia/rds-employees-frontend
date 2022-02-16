@@ -7,7 +7,7 @@
   width: 100%;
   padding: 0 200px;
   background-color: aliceblue;
-  min-height: 100vh;
+  min-height: 100%;
 }
 .cover {
   position: relative;

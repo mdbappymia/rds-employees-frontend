@@ -8,7 +8,6 @@ const LoggedInEmployee = () => {
       .then((res) => res.json())
       .then((data) => setLoggedInEmployees(data));
   }, []);
-  console.log(loggedInEmployees);
   return (
     <div>
       <h2 className="text-center font-bold uppercase border-4 my-3 p-3 text-4xl hover:bg-gray-400">

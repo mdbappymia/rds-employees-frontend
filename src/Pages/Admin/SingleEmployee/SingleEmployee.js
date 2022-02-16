@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import useStore from "../../../hooks/useStore";
 import "./SingleEmployee.css";
 
 const SingleEmployee = ({
@@ -9,6 +10,7 @@ const SingleEmployee = ({
   const { displayName, email, approveStatus, user_id, employeeInfo } = employee;
   const [waitingApprove, setWaitingApprove] = useState(false);
   const [waitingReject, setWaitingReject] = useState(false);
+  const { token, employees, setEmployees } = useStore();
 
   const handleApprove = () => {
     const isApprove = window.confirm(
@@ -20,6 +22,7 @@ const SingleEmployee = ({
         method: "PUT",
         headers: {
           "content-type": "application/json",
+          authorization: `Bearer ${token}`,
         },
         body: JSON.stringify({ approveStatus: "Approved" }),
       })
@@ -29,7 +32,9 @@ const SingleEmployee = ({
             const remaining = pendingEmployees.filter(
               (emp) => emp.user_id !== user_id
             );
+
             setPendingEmployees(remaining);
+            setEmployees([...employees, employee]);
             setWaitingApprove(false);
             alert("Update successfully");
           }
@@ -44,6 +49,7 @@ const SingleEmployee = ({
         method: "PUT",
         headers: {
           "content-type": "application/json",
+          authorization: `Bearer ${token}`,
         },
         body: JSON.stringify({ approveStatus: "Reject" }),
       })
@@ -74,11 +80,11 @@ const SingleEmployee = ({
           <h2>Email: {email}</h2>
           <h1>Employee Id: {employeeInfo?.employeeId}</h1>
           <h1>Role ID: {employeeInfo?.role?.roleId}</h1>
-          <h1>Role Description: {employeeInfo?.role.roleDes}</h1>
+          <h1>Role Description: {employeeInfo?.role?.roleDes}</h1>
           <h1>NID no: {employeeInfo?.nid}</h1>
         </div>
         <div className="right lg:w-1/2 ">
-          <h1>Address: {employeeInfo.address}</h1>
+          <h1>Address: {employeeInfo?.address}</h1>
           <h1>Blood Group: {employeeInfo?.bloodGroup}</h1>
           <h3>Status: {approveStatus}</h3>
           <h1>

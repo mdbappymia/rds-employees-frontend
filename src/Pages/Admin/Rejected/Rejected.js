@@ -14,7 +14,7 @@ const Rejected = () => {
         rejected users
       </h3>
       {rejected.map((rejectUser) => (
-        <SingleEmployee employee={rejectUser} />
+        <SingleEmployee key={rejectUser._id} employee={rejectUser} />
       ))}
     </div>
   );

@@ -10,9 +10,10 @@ const EmployeeManagement = () => {
         Manage Employees
       </h1>
       <div className="employees-container">
-        {employees.map((employee) => (
-          <ManageSingleEmployee key={employee._id} employee={employee} />
-        ))}
+        {employees.length &&
+          employees.map((employee) => (
+            <ManageSingleEmployee key={employee._id} employee={employee} />
+          ))}
       </div>
     </div>
   );

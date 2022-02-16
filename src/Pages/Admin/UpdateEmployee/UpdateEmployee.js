@@ -6,7 +6,7 @@ import useStore from "../../../hooks/useStore";
 const UpdateEmployee = () => {
   const [singleEmployee, setSingleEmployee] = useState({});
   const { user_id } = useParams();
-  const { employees, setEmployees } = useStore();
+  const { employees, setEmployees, token } = useStore();
 
   useEffect(() => {
     fetch(`http://localhost:5000/users/${user_id}`)
@@ -44,6 +44,7 @@ const UpdateEmployee = () => {
         method: "PUT",
         headers: {
           "content-type": "application/json",
+          authorization: `Bearer ${token}`,
         },
         body: JSON.stringify(updateData),
       })

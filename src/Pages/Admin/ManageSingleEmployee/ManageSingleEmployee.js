@@ -20,7 +20,7 @@ const ManageSingleEmployee = ({ employee }) => {
           <h1>NID no: {employeeInfo?.nid}</h1>
         </div>
         <div className="right lg:w-2/3 ">
-          <h1>Address: {employeeInfo.address}</h1>
+          <h1>Address: {employeeInfo?.address}</h1>
           <h1>Blood Group: {employeeInfo?.bloodGroup}</h1>
           <h1>
             Joining Date: {new Date(employeeInfo?.joiningDate).toDateString()}

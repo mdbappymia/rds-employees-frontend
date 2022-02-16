@@ -6,6 +6,7 @@ import {
   onAuthStateChanged,
   updateProfile,
   signOut,
+  getIdToken,
 } from "firebase/auth";
 import initializeAuthentication from "../Pages/Authentication/Firebase/firebase.init";
 
@@ -15,6 +16,7 @@ const useFirebase = () => {
   const [user, setUser] = useState({});
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(true);
+  const [token, setToken] = useState("");
   const auth = getAuth();
 
   // ========= Create a user =========
@@ -84,6 +86,10 @@ const useFirebase = () => {
           .then((res) => res.json())
           .then((data) => {
             setUser({ ...user, ...data });
+            getIdToken(user).then((idToken) => {
+              setToken(idToken);
+              // localStorage.setItem("token", idToken);
+            });
             setError("");
           })
           .finally(() => setIsLoading(false));
@@ -123,6 +129,7 @@ const useFirebase = () => {
       method: "PUT",
       headers: {
         "content-type": "application/json",
+        authorization: `Bearer ${token}`,
       },
       body: JSON.stringify(data),
     });
@@ -132,6 +139,7 @@ const useFirebase = () => {
     auth,
     error,
     user,
+    token,
     setUser,
     createUserUsingEmailAndPassword,
     signInUsingEmailAndPassword,

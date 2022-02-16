@@ -11,9 +11,10 @@ const Employees = () => {
         All employees
       </h1>
       <div className="employee-card-container">
-        {employees.map((employee) => (
-          <Employee key={employee._id} employee={employee} />
-        ))}
+        {employees.length &&
+          employees?.map((employee) => (
+            <Employee key={employee._id} employee={employee} />
+          ))}
       </div>
     </div>
   );

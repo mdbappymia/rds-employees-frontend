@@ -3,6 +3,7 @@ import SingleEmployee from "../SingleEmployee/SingleEmployee";
 
 const WaitingApproval = () => {
   const [pendingEmployees, setPendingEmployees] = useState([]);
+
   useEffect(() => {
     fetch(`http://localhost:5000/user?approveStatus=Pending`)
       .then((res) => res.json())

@@ -21,6 +21,7 @@ const Login = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
+
   const onSubmit = (data) => {
     if (!data.email) {
       alert("Empty field");

@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import useStore from "../../../hooks/useStore";
 
 const UpdateProfile = ({ setUpdateShow }) => {
-  const { user, auth, setUser } = useStore();
+  const { user, auth, setUser, token } = useStore();
   const { register, handleSubmit } = useForm();
   const [loading, setLoading] = useState(false);
   const onSubmit = (data) => {
@@ -34,6 +34,7 @@ const UpdateProfile = ({ setUpdateShow }) => {
         method: "PUT",
         headers: {
           "content-type": "application/json",
+          authorization: `Bearer ${token}`,
         },
         body: JSON.stringify(updateData),
       })
