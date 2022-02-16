@@ -6,7 +6,7 @@ import "./Employees.css";
 const Employees = () => {
   const { employees } = useStore();
   return (
-    <div className="container px-4 mx-auto">
+    <div className="container px-4 mx-auto min-h-screen">
       <h1 className="text-center text-4xl uppercase font-bold my-3 border-4 p-3 hover:bg-gray-300">
         All employees
       </h1>

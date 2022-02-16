@@ -63,7 +63,7 @@ const EmployeeDetails = () => {
         </h1>
       </div>
       <Link to="/">
-        <button className="mt-8 text-blue-900 font-bold text-xl">
+        <button className="mt-8 text-blue-700 font-bold text-xl hover:text-blue-500 underline">
           &lt;&lt; Back to home
         </button>
       </Link>
