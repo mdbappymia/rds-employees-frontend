@@ -18,11 +18,18 @@ const ProfileHome = () => {
       </h1>
       <div className="cover">
         <img
+          // src="https://japandesk.basis.org.bd/public/storage/upload/comapny_logo/xPmNR8MQ0CFHBbzZJVtBa6b8eLFQ2ZkXgApb4jLE.jpeg"
+          alt=""
+          className="w-full h-80 border-4 border-dashed relative bg-black"
+        />
+        <div className="profile-photo-container">
+          <img className="m-0 user-profile-photo" src={user?.photoURL} alt="" />
+        </div>
+        <img
+          className="company-logo"
           src="https://japandesk.basis.org.bd/public/storage/upload/comapny_logo/xPmNR8MQ0CFHBbzZJVtBa6b8eLFQ2ZkXgApb4jLE.jpeg"
           alt=""
-          className="w-full h-80 border-4 border-dashed p-5 relative"
         />
-        <img className="user-profile-photo" src={user?.photoURL} alt="" />
       </div>
       <div className="profile-info w-2/3">
         <h1 className="text-4xl my-3">{user?.displayName}</h1>

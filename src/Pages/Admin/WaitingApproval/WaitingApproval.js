@@ -1,33 +1,24 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import useStore from "../../../hooks/useStore";
 import SingleEmployee from "../SingleEmployee/SingleEmployee";
 
 const WaitingApproval = () => {
-  const { token } = useStore();
-  const [pendingEmployees, setPendingEmployees] = useState([]);
+  const { pendingEmployees, setPendingEmployees } = useStore();
 
-  useEffect(() => {
-    fetch(`http://localhost:5000/user?approveStatus=Pending`, {
-      headers: {
-        authorization: `Bearer ${token}`,
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => setPendingEmployees(data));
-  }, [token]);
   return (
     <div>
       <h1 className="text-center text-4xl font-bold uppercase border-4 p-5 hover:bg-gray-400">
         Waiting for Approval
       </h1>
-      {pendingEmployees.map((pendingEmployee) => (
-        <SingleEmployee
-          key={pendingEmployee._id}
-          employee={pendingEmployee}
-          setPendingEmployees={setPendingEmployees}
-          pendingEmployees={pendingEmployees}
-        />
-      ))}
+      {pendingEmployees.length &&
+        pendingEmployees.map((pendingEmployee) => (
+          <SingleEmployee
+            key={pendingEmployee._id}
+            employee={pendingEmployee}
+            setPendingEmployees={setPendingEmployees}
+            pendingEmployees={pendingEmployees}
+          />
+        ))}
     </div>
   );
 };

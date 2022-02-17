@@ -10,7 +10,7 @@ const SingleEmployee = ({
   const { displayName, email, approveStatus, user_id, employeeInfo } = employee;
   const [waitingApprove, setWaitingApprove] = useState(false);
   const [waitingReject, setWaitingReject] = useState(false);
-  const { token, employees, setEmployees } = useStore();
+  const { token, employees, setEmployees, rejected, setRejected } = useStore();
 
   const handleApprove = () => {
     const isApprove = window.confirm(
@@ -61,6 +61,7 @@ const SingleEmployee = ({
             );
             setPendingEmployees(remaining);
             setWaitingReject(false);
+            setRejected([...rejected, employee]);
             alert("Update successfully");
           }
         });

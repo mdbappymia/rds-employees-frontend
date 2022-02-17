@@ -19,18 +19,19 @@ const UpdateProfile = ({ setUpdateShow }) => {
       return;
     }
     const isUserUpdate = window.confirm("Are you sure?");
-    const updateData = {
-      displayName: data.name || user.displayName,
-      employeeInfo: {
-        ...user.employeeInfo,
-        photoURL: data.photoURL || user.photoURL,
-        address: data.address || user.employeeInfo.address,
-        about: data.about || user.employeeInfo.about,
-      },
-    };
+
     if (isUserUpdate) {
+      const updateData = {
+        displayName: data.name || user.displayName,
+        employeeInfo: {
+          ...user.employeeInfo,
+          photoURL: data.photoURL || user.photoURL,
+          address: data.address || user.employeeInfo.address,
+          about: data.about || user.employeeInfo.about,
+        },
+      };
       setLoading(true);
-      fetch(`http://localhost:5000/users/${user.user_id}`, {
+      fetch(`http://localhost:5000/users/${user.uid}`, {
         method: "PUT",
         headers: {
           "content-type": "application/json",

@@ -32,24 +32,29 @@ const AppBar = () => {
             id="example-navbar-danger"
           >
             <ul className="flex flex-col lg:flex-row list-none lg:ml-auto">
-              <li className="nav-item">
-                <NavLink
-                  className="px-3 py-3 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
-                  to="/"
-                >
-                  <i className="fas fa-home text-lg leading-lg text-white opacity-75"></i>
-                  <span className="ml-2">Home</span>
-                </NavLink>
-              </li>
-              <li className="nav-item">
-                <NavLink
-                  className="px-3 py-3 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
-                  to="/employees"
-                >
-                  <i className="fa fa-users text-lg leading-lg text-white opacity-75"></i>
-                  <span className="ml-2">Employees</span>
-                </NavLink>
-              </li>
+              {user.approveStatus === "Approved" && (
+                <>
+                  <li className="nav-item">
+                    <NavLink
+                      className="px-3 py-3 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
+                      to="/"
+                    >
+                      <i className="fas fa-home text-lg leading-lg text-white opacity-75"></i>
+                      <span className="ml-2">Home</span>
+                    </NavLink>
+                  </li>
+                  <li className="nav-item">
+                    <NavLink
+                      className="px-3 py-3 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
+                      to="/employees"
+                    >
+                      <i className="fa fa-users text-lg leading-lg text-white opacity-75"></i>
+                      <span className="ml-2">Employees</span>
+                    </NavLink>
+                  </li>
+                </>
+              )}
+
               <li className="nav-item">
                 {user.role === "Admin" && (
                   <NavLink

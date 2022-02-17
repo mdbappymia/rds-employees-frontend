@@ -13,7 +13,7 @@
   position: relative;
   /* min-height: 100vh; */
 }
-.user-profile-photo {
+.profile-photo-container {
   height: 200px;
   width: 200px;
   border-radius: 50%;
@@ -22,4 +22,19 @@
   margin: 10px;
   background-color: black;
   top: 0;
+}
+.user-profile-photo {
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+  position: absolute;
+  background-color: black;
+  top: 0;
+}
+.company-logo {
+  height: 50px;
+  width: 50px;
+  position: absolute;
+  top: 150px;
+  left: 150px;
 }

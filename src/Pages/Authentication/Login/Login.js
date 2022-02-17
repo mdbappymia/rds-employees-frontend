@@ -33,16 +33,16 @@ const Login = () => {
         photoURL: data.photoURL,
         role: {
           roleId: data.roleId,
-          roleDes: data.roleDes,
+          roleDes: "",
         },
-        employeeId: data.employeeId,
-        about: data.about,
-        joiningDate: data.joiningDate,
-        resignDate: data.resignDate || "Present",
-        salary: data.salary,
-        address: data.address,
-        bloodGroup: data.bloodGroup,
-        nid: data.nid,
+        employeeId: "",
+        about: "",
+        joiningDate: "",
+        resignDate: "",
+        salary: "",
+        address: "",
+        bloodGroup: "",
+        nid: "",
       };
       createUserUsingEmailAndPassword(
         data.email,
@@ -91,6 +91,7 @@ const Login = () => {
           <form onSubmit={handleSubmit(onSubmit)}>
             <label>Email: *</label>
             <input
+              autoComplete="off"
               className="border-2 border-black w-full my-3 p-2 text-2xl rounded-md"
               placeholder="Enter your email"
               {...register("email", { required: true })}
@@ -128,98 +129,6 @@ const Login = () => {
                   {...register("roleId", { required: true })}
                 />
                 {errors.roleId && (
-                  <span className="text-red-500">This field is required</span>
-                )}
-                <br />
-                <label>Role Description: *</label>
-                <input
-                  className="border-2 border-black w-full my-3 p-2 text-2xl rounded-md"
-                  placeholder="Role Description"
-                  {...register("roleDes", { required: true })}
-                />
-                {errors.roleDes && (
-                  <span className="text-red-500">This field is required</span>
-                )}
-                <br />
-                <label>Employee ID: *</label>
-                <input
-                  className="border-2 border-black w-full my-3 p-2 text-2xl rounded-md"
-                  placeholder="Employee ID"
-                  {...register("employeeId", { required: true })}
-                />
-                {errors.employeeId && (
-                  <span className="text-red-500">This field is required</span>
-                )}
-                <br />
-                <label>About: *</label>
-                <textarea
-                  rows={4}
-                  className="border-2 border-black w-full my-3 p-2 text-2xl rounded-md"
-                  placeholder="About"
-                  {...register("about", { required: true })}
-                />
-                {errors.about && (
-                  <span className="text-red-500">This field is required</span>
-                )}
-                <br />
-                <label>Joining Date: *</label>
-                <input
-                  className="border-2 border-black w-full my-3 p-2 text-2xl rounded-md"
-                  placeholder="Joining Date"
-                  type="date"
-                  {...register("joiningDate", { required: true })}
-                />
-                {errors.joiningDate && (
-                  <span className="text-red-500">This field is required</span>
-                )}
-                <br />
-                <label>Resign Date:</label>
-                <input
-                  className="border-2 border-black w-full my-3 p-2 text-2xl rounded-md"
-                  placeholder="Resign Date"
-                  type="date"
-                  {...register("resignDate")}
-                />
-                <br />
-                <label>Salary: *</label>
-                <input
-                  className="border-2 border-black w-full my-3 p-2 text-2xl rounded-md"
-                  placeholder="Salary"
-                  type="number"
-                  {...register("salary", { required: true })}
-                />
-                {errors.salary && (
-                  <span className="text-red-500">This field is required</span>
-                )}
-                <br />
-                <label>Address: *</label>
-                <input
-                  className="border-2 border-black w-full my-3 p-2 text-2xl rounded-md"
-                  placeholder="Address"
-                  {...register("address", { required: true })}
-                />
-                {errors.address && (
-                  <span className="text-red-500">This field is required</span>
-                )}
-                <br />
-                <label>Blood Group: *</label>
-                <input
-                  className="border-2 border-black w-full my-3 p-2 text-2xl rounded-md"
-                  placeholder="Blood Group"
-                  {...register("bloodGroup", { required: true })}
-                />
-                {errors.bloodGroup && (
-                  <span className="text-red-500">This field is required</span>
-                )}
-                <br />
-                <label>NID: *</label>
-                <input
-                  className="border-2 border-black w-full my-3 p-2 text-2xl rounded-md"
-                  placeholder="NID"
-                  type="number"
-                  {...register("nid", { required: true })}
-                />
-                {errors.nid && (
                   <span className="text-red-500">This field is required</span>
                 )}
                 <br />
