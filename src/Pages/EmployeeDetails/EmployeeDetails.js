@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, useParams } from "react-router-dom";
 import useStore from "../../hooks/useStore";
+import "./EmployeeDetails.css";
 
 const EmployeeDetails = () => {
   const { user_id } = useParams();
@@ -14,14 +15,14 @@ const EmployeeDetails = () => {
       <h1 className="text-center uppercase text-5xl font-bold my-3 py-3 border-4 hover:bg-gray-400">
         Profile
       </h1>
-      <div className="cover">
+      <div className="relative">
         <img
           src="https://japandesk.basis.org.bd/public/storage/upload/comapny_logo/xPmNR8MQ0CFHBbzZJVtBa6b8eLFQ2ZkXgApb4jLE.jpeg"
           alt=""
           className="w-full h-80 border-4 border-dashed p-5 relative"
         />
         <img
-          className="user-profile-photo"
+          className="employee-profile-photo"
           src={employee[0]?.employeeInfo?.photoURL}
           alt=""
         />
