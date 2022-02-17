@@ -27,22 +27,23 @@ const Login = () => {
       alert("Empty field");
       return;
     }
-    const employeeInfo = {
-      photoURL: data.photoURL,
-      role: {
-        roleId: data.roleId,
-        roleDes: data.roleDes,
-      },
-      employeeId: data.employeeId,
-      about: data.about,
-      joiningDate: data.joiningDate,
-      resignDate: data.resignDate || "Present",
-      salary: data.salary,
-      address: data.address,
-      bloodGroup: data.bloodGroup,
-      nid: data.nid,
-    };
+
     if (isRegister) {
+      const employeeInfo = {
+        photoURL: data.photoURL,
+        role: {
+          roleId: data.roleId,
+          roleDes: data.roleDes,
+        },
+        employeeId: data.employeeId,
+        about: data.about,
+        joiningDate: data.joiningDate,
+        resignDate: data.resignDate || "Present",
+        salary: data.salary,
+        address: data.address,
+        bloodGroup: data.bloodGroup,
+        nid: data.nid,
+      };
       createUserUsingEmailAndPassword(
         data.email,
         data.password,
