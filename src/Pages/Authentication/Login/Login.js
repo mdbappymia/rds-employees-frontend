@@ -80,6 +80,8 @@ const Login = () => {
   if (user.email) {
     return <Navigate to="/" />;
   }
+  // console.log(navigator.userAgent.indexOf("Edg"));
+
   return (
     <>
       <div className="py-5 mx-2 h-85vh flex justify-center items-center">
@@ -88,10 +90,14 @@ const Login = () => {
             {isRegister ? "Register" : "Login"}
           </h1>
           {error && <p className="text-center text-red-600 my-8">{error}</p>}
-          <form onSubmit={handleSubmit(onSubmit)}>
+          <form autoComplete="off" onSubmit={handleSubmit(onSubmit)}>
+            <input autoComplete="0" type="text" className="hidden" />
             <label>Email: *</label>
             <input
-              autoComplete="off"
+              type="email"
+              autoComplete={`${
+                navigator.userAgent.indexOf("Edg") > -1 ? "0" : "off"
+              }`}
               className="border-2 border-black w-full my-3 p-2 text-2xl rounded-md"
               placeholder="Enter your email"
               {...register("email", { required: true })}
