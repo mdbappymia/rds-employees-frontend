@@ -49,7 +49,7 @@ const useFirebase = () => {
       })
       .finally(() => setIsLoading(false));
   };
-  console.log(user);
+
   //   ========= Sign in user ==========
   const signInUsingEmailAndPassword = (email, password, navigate, from) => {
     setIsLoading(true);

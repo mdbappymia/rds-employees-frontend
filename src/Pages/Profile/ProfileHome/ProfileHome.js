@@ -5,10 +5,10 @@ import UpdateProfile from "../UpdateProfile/UpdateProfile";
 import "./ProfileHome.css";
 
 const ProfileHome = () => {
-  const { user } = useStore();
+  const { user, isLoading } = useStore();
   const [updateShow, setUpdateShow] = useState(false);
 
-  if (!user.email) {
+  if (!isLoading && !user.email) {
     return <Navigate to="/login" />;
   }
   return (
@@ -23,7 +23,11 @@ const ProfileHome = () => {
           className="w-full h-80 border-4 border-dashed relative bg-black"
         />
         <div className="profile-photo-container">
-          <img className="m-0 user-profile-photo" src={user?.photoURL} alt="" />
+          <img
+            className="m-0 user-profile-photo"
+            src={`data:image/jpeg;base64,${user?.profileImage}`}
+            alt=""
+          />
         </div>
         <img
           className="company-logo"

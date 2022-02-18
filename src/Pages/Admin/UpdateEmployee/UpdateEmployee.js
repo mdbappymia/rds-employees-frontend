@@ -19,7 +19,6 @@ const UpdateEmployee = () => {
 
   const onSubmit = (data) => {
     const employeeInfo = {
-      photoURL: data.photoURL || singleEmployee.employeeInfo.photoURL,
       role: {
         roleId: data.roleId || singleEmployee.employeeInfo.role.roleId,
         roleDes: data.roleDes || singleEmployee.employeeInfo.role.roleDes,
@@ -79,15 +78,6 @@ const UpdateEmployee = () => {
               placeholder="Name"
               defaultValue={singleEmployee?.displayName}
               {...register("name")}
-            />
-            <br />
-            <label>Photo URL:</label>
-            <input
-              disabled
-              className="border-2 border-black w-full my-3 p-2 text-2xl rounded-md bg-gray-200"
-              defaultValue={singleEmployee?.employeeInfo?.photoURL}
-              placeholder="Photo URL"
-              {...register("photoURL")}
             />
             <br />
             <label>Email:</label>
@@ -160,6 +150,24 @@ const UpdateEmployee = () => {
               defaultValue={singleEmployee?.employeeInfo?.resignDate}
               type="date"
               {...register("resignDate")}
+            />
+            <br />
+            <label>NID:</label>
+            <input
+              className="border-2 border-black w-full my-3 p-2 text-2xl rounded-md"
+              placeholder="NID"
+              type="number"
+              defaultValue={singleEmployee?.employeeInfo?.nid}
+              {...register("nid")}
+            />
+            <br />
+            <label>Blood Group:</label>
+            <input
+              className="border-2 border-black w-full my-3 p-2 text-2xl rounded-md"
+              placeholder="Blood Group"
+              type="text"
+              defaultValue={singleEmployee?.employeeInfo?.bloodGroup}
+              {...register("bloodGroup")}
             />
             <br />
             <label>Salary:</label>

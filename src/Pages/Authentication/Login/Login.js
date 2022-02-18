@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { Navigate, useLocation, useNavigate } from "react-router-dom";
+import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import useStore from "../../../hooks/useStore";
 
 const Login = () => {
@@ -172,27 +172,32 @@ const Login = () => {
               />
             )}
           </form>
-          {isRegister ? (
-            <h1 className="text-xl my-3">
-              Already register?{" "}
-              <span
-                className="text-sky-800 cursor-pointer"
-                onClick={() => setIsRegister(false)}
-              >
-                Login here
-              </span>
-            </h1>
-          ) : (
-            <h1 className="text-xl my-3">
-              New user?{" "}
-              <span
-                className="text-sky-800 cursor-pointer"
-                onClick={() => setIsRegister(true)}
-              >
-                Signup here
-              </span>
-            </h1>
-          )}
+          <div className="flex justify-between">
+            {isRegister ? (
+              <h1 className="text-xl my-3">
+                Already register?{" "}
+                <span
+                  className="text-sky-800 cursor-pointer"
+                  onClick={() => setIsRegister(false)}
+                >
+                  Login here
+                </span>
+              </h1>
+            ) : (
+              <h1 className="text-xl my-3">
+                New user?{" "}
+                <span
+                  className="text-sky-800 cursor-pointer"
+                  onClick={() => setIsRegister(true)}
+                >
+                  Signup here
+                </span>
+              </h1>
+            )}
+            <Link className="text-blue-500 underline mt-4" to="/resetPassword">
+              Forgot password
+            </Link>
+          </div>
         </div>
       </div>
     </>

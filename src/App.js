@@ -19,6 +19,7 @@ import PendingPage from "./Pages/PendingPage/PendingPage";
 import RejectedPage from "./Pages/RejectedPage/RejectedPage";
 import AdminRoute from "./Pages/Authentication/AdminRoute/AdminRoute";
 import EmployeeDetails from "./Pages/EmployeeDetails/EmployeeDetails";
+import ResetPassword from "./Pages/ResetPassword/ResetPassword";
 
 const App = () => {
   return (
@@ -45,6 +46,7 @@ const App = () => {
           />
           <Route path="/about" element={<About />} />
           <Route path="/profile" element={<ProfileHome />} />
+          <Route path="/resetPassword" element={<ResetPassword />} />
           <Route
             path="/adminDashboard"
             element={
