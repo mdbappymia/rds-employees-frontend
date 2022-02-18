@@ -4,6 +4,7 @@ import useStore from "../../../hooks/useStore";
 const LoggedInEmployee = () => {
   const { loggedInEmployees } = useStore();
 
+  console.log(loggedInEmployees);
   return (
     <div>
       <h2 className="text-center font-bold uppercase border-4 my-3 p-3 text-4xl hover:bg-gray-400">
@@ -15,7 +16,7 @@ const LoggedInEmployee = () => {
             <div className="mr-5">
               <img
                 style={{ width: 100, height: 70 }}
-                src={loggedInEmployee?.employeeInfo?.photoURL}
+                src={`data:image/jpeg;base64,${loggedInEmployee?.profileImage}`}
                 alt=""
               />
             </div>

@@ -7,7 +7,14 @@ const SingleEmployee = ({
   setPendingEmployees,
   pendingEmployees,
 }) => {
-  const { displayName, email, approveStatus, user_id, employeeInfo } = employee;
+  const {
+    displayName,
+    email,
+    approveStatus,
+    user_id,
+    employeeInfo,
+    profileImage,
+  } = employee;
   const [waitingApprove, setWaitingApprove] = useState(false);
   const [waitingReject, setWaitingReject] = useState(false);
   const { token, employees, setEmployees, rejected, setRejected } = useStore();
@@ -74,7 +81,7 @@ const SingleEmployee = ({
         <div className="left lg:w-1/2">
           <img
             className="single-employee-img"
-            src={employeeInfo?.photoURL}
+            src={`data:image/jpeg;base64,${profileImage}`}
             alt=""
           />
           <h1>Name: {displayName}</h1>

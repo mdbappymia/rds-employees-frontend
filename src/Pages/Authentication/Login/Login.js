@@ -12,6 +12,7 @@ const Login = () => {
     user,
   } = useStore();
   const [isRegister, setIsRegister] = useState(false);
+  const [profileImage, setProfileImage] = useState(null);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -30,7 +31,7 @@ const Login = () => {
 
     if (isRegister) {
       const employeeInfo = {
-        photoURL: data.photoURL,
+        photoURL: "",
         role: {
           roleId: data.roleId,
           roleDes: "",
@@ -44,11 +45,16 @@ const Login = () => {
         bloodGroup: "",
         nid: "",
       };
+      const formData = new FormData();
+      formData.append("profileImage", profileImage);
+      formData.append("displayName", data.name);
+      formData.append("email", data.email);
+      formData.append("employeeInfo", JSON.stringify(employeeInfo));
       createUserUsingEmailAndPassword(
         data.email,
         data.password,
         data.name,
-        employeeInfo,
+        formData,
         navigate
       );
     } else {
@@ -118,15 +124,16 @@ const Login = () => {
                   <span className="text-red-500">This field is required</span>
                 )}
                 <br />
-                <label>Photo Url: *</label>
+                <label>Upload your photo: *</label>
+                <br />
                 <input
-                  className="border-2 border-black w-full my-3 p-2 text-2xl rounded-md"
-                  placeholder="Photo URL"
-                  {...register("photoURL", { required: true })}
+                  required
+                  type="file"
+                  accept="image/*"
+                  className="py-5"
+                  onChange={(e) => setProfileImage(e.target.files[0])}
+                  // {...register("image")}
                 />
-                {errors.photoURL && (
-                  <span className="text-red-500">This field is required</span>
-                )}
                 <br />
                 <label>Role Id: *</label>
                 <input

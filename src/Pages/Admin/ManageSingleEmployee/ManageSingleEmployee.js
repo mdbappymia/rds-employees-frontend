@@ -2,14 +2,14 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const ManageSingleEmployee = ({ employee }) => {
-  const { displayName, email, employeeInfo, user_id } = employee;
+  const { displayName, email, employeeInfo, user_id, profileImage } = employee;
   return (
     <div className=" border-2 my-3 p-4">
       <div className="lg:flex justify-between">
         <div className="left lg:w-1/3">
           <img
             className="single-employee-img"
-            src={employeeInfo?.photoURL}
+            src={`data:image/jpeg;base64,${profileImage}`}
             alt=""
           />
           <h1>Name: {displayName}</h1>

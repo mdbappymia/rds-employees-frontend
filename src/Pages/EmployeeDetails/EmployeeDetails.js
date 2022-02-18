@@ -23,7 +23,7 @@ const EmployeeDetails = () => {
         />
         <img
           className="employee-profile-photo"
-          src={employee[0]?.employeeInfo?.photoURL}
+          src={`data:image/jpeg;base64,${employee[0]?.profileImage}`}
           alt=""
         />
       </div>

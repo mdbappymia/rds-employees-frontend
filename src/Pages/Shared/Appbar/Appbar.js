@@ -83,7 +83,7 @@ const AppBar = () => {
                   >
                     <img
                       style={{ height: 35, width: 35, borderRadius: "50%" }}
-                      src={user?.photoURL}
+                      src={`data:image/jpeg;base64,${user.profileImage}`}
                       alt=""
                     />
                     <span className="ml-2">Profile</span>

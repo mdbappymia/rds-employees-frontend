@@ -17,6 +17,7 @@ const useFirebase = () => {
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const [token, setToken] = useState("");
+  const [userReload, setUserReload] = useState(false);
   const auth = getAuth();
 
   // ========= Create a user =========
@@ -24,26 +25,22 @@ const useFirebase = () => {
     email,
     password,
     name,
-    employeeInfo,
+    formData,
     navigate
   ) => {
+    // saveUser(user.email, name, user.uid,  formData);
     setIsLoading(true);
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
 
         if (user.email) {
-          saveUser(user.email, name, user.uid, employeeInfo);
+          formData.append("user_id", user.uid);
+          saveUser(formData);
         }
         updateProfile(auth.currentUser, {
           displayName: name,
-          photoURL: employeeInfo.photoURL,
         }).then(() => {
-          setUser({
-            ...user,
-            photoURL: employeeInfo.photoURL,
-            employeeInfo: employeeInfo,
-          });
           navigate("/");
         });
       })
@@ -52,6 +49,7 @@ const useFirebase = () => {
       })
       .finally(() => setIsLoading(false));
   };
+  console.log(user);
   //   ========= Sign in user ==========
   const signInUsingEmailAndPassword = (email, password, navigate, from) => {
     setIsLoading(true);
@@ -99,28 +97,20 @@ const useFirebase = () => {
       }
     });
     return () => unsubscribed();
-  }, [auth]);
+  }, [auth, userReload]);
 
   // =============save user to database =============
-  const saveUser = (email, displayName, user_id, employeeInfo) => {
-    const user = {
-      email,
-      displayName,
-      employeeInfo,
-      user_id,
-      role: "User",
-      isLogin: "true",
-      approveStatus: "Pending",
-    };
+  const saveUser = (formData) => {
     fetch("http://localhost:5000/users", {
       method: `POST`,
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(user),
+      body: formData,
     })
       .then((res) => res.json())
-      .then((data) => {});
+      .then((data) => {
+        if (data.acknowledged) {
+          setUserReload(!userReload);
+        }
+      });
   };
 
   // ===============Login Status Change==============
