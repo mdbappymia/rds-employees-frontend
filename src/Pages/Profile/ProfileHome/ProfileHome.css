@@ -93,8 +93,9 @@
 }
 
 .pen-icon {
-  opacity: 0.5;
+  display: none;
 }
 .profile-image-div:hover .pen-icon {
+  display: block;
   opacity: 1;
 }

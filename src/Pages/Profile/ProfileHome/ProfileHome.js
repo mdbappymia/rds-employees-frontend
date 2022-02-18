@@ -14,6 +14,10 @@ const ProfileHome = () => {
     return <Navigate to="/login" />;
   }
   const handleProfileImageChange = () => {
+    if (!uploadedImage) {
+      setUploadInputShow(false);
+      return;
+    }
     const formData = new FormData();
     formData.append("profileImage", uploadedImage);
     fetch(`http://localhost:5000/updateProfilePicture/${user.user_id}`, {
@@ -25,6 +29,7 @@ const ProfileHome = () => {
         if (result.acknowledged) {
           alert("Update successfully");
           setUploadInputShow(false);
+          setUploadedImage(null);
           setUserReload(!userReload);
         }
       });
@@ -45,13 +50,13 @@ const ProfileHome = () => {
               />
               <div className="absolute top-10 bg-black text-left">
                 <button
-                  className="bg-indigo-600 "
+                  className="bg-indigo-600 pen-icon"
                   onClick={() => setUploadInputShow(!uploadInputShow)}
                 >
                   {uploadInputShow ? (
                     <p className="bg-red-500 px-3 pb-2 m-0">&times;</p>
                   ) : (
-                    <i className="fa fa-pen px-3 pb-2 m-0 pen-icon"></i>
+                    <i className="fa fa-pen px-3 pb-2 m-0 "></i>
                   )}
                 </button>
                 <div className={`${uploadInputShow ? "block" : "hidden"}`}>
