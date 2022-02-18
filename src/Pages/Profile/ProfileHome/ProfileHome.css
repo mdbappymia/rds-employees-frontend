@@ -1,5 +1,6 @@
 .profile-home-container {
   position: relative;
+  min-height: 85vh;
 }
 .update-profile-component {
   position: absolute;
@@ -11,29 +12,89 @@
 }
 .cover {
   position: relative;
+  min-height: 85vh;
 }
-.profile-photo-container {
-  height: 200px;
-  width: 200px;
+
+.wrapper {
+  grid-template-columns: 30% 70%;
+}
+
+.wrapper .left {
+  background: linear-gradient(to right, #080b24, #000000);
+  padding: 30px 25px;
+  text-align: center;
+  color: #fff;
+}
+.wrapper .left .basic_info {
+  margin-top: 8%;
+  margin-bottom: 10%;
+}
+.wrapper .left .basic_info h4 {
+  line-height: 0.5;
+}
+.wrapper .left .basic_info .address {
+  font-size: 0.9rem;
+}
+.wrapper .left h4 {
+  text-align: start;
+  margin-left: 10%;
+}
+
+.wrapper .left h4 {
+  margin-bottom: 10px;
+}
+
+.wrapper .right {
+  background: #fff;
+  padding: 30px 25px;
+}
+
+.wrapper .right .info,
+.wrapper .right .projects {
+  margin-bottom: 25px;
+}
+
+.wrapper .right .info h3,
+.wrapper .right .projects h3 {
+  margin-bottom: 15px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #e0e0e0;
+  color: #353c4e;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+}
+
+.wrapper .right .info_data,
+.wrapper .right .projects_data {
+  display: flex;
+  justify-content: space-between;
+  flex-flow: column wrap;
+}
+
+.wrapper .right .info_data .data h4,
+.wrapper .right .projects_data .data h4 {
+  color: #353c4e;
+  margin-bottom: 5px;
+}
+
+.wrapper .right .info_data .data p,
+.wrapper .right .projects_data .data p {
+  font-size: 13px;
+  margin-bottom: 10px;
+  color: #919aa3;
+}
+.profile-image {
+  height: 250px !important;
+  width: 250px !important;
   border-radius: 50%;
-  border: 3px solid gray;
-  position: absolute;
-  margin: 10px;
-  background-color: black;
-  top: 0;
 }
-.user-profile-photo {
-  height: 100%;
-  width: 100%;
-  border-radius: 50%;
-  position: absolute;
-  background-color: black;
-  top: 0;
+.profile-image-div:hover .profile-image {
+  opacity: 0.5;
 }
-.company-logo {
-  height: 50px;
-  width: 50px;
-  position: absolute;
-  top: 150px;
-  left: 150px;
+
+.pen-icon {
+  opacity: 0.5;
+}
+.profile-image-div:hover .pen-icon {
+  opacity: 1;
 }

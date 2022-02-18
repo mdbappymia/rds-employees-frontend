@@ -136,6 +136,8 @@ const useFirebase = () => {
     isLoading,
     logOut,
     loginStatusChange,
+    userReload,
+    setUserReload,
   };
 };
 
