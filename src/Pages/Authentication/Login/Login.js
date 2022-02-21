@@ -31,11 +31,7 @@ const Login = () => {
 
     if (isRegister) {
       const employeeInfo = {
-        photoURL: "",
-        role: {
-          roleId: data.roleId,
-          roleDes: "",
-        },
+        roleId: "",
         employeeId: "",
         about: "",
         joiningDate: "",

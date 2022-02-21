@@ -9,11 +9,10 @@ const UpdateProfile = ({ setUpdateShow }) => {
   const [loading, setLoading] = useState(false);
   const onSubmit = (data) => {
     if (
-      (data.photoURL === user.photoURL &&
-        data.address === user.employeeInfo.address &&
+      (data.address === user.employeeInfo.address &&
         data.about === user.employeeInfo.about &&
         data.name === user.displayName) ||
-      (!data.photoURL && !data.address && !data.about && !data.name)
+      (!data.address && !data.about && !data.name)
     ) {
       setUpdateShow(false);
       return;
@@ -25,7 +24,6 @@ const UpdateProfile = ({ setUpdateShow }) => {
         displayName: data.name || user.displayName,
         employeeInfo: {
           ...user.employeeInfo,
-          photoURL: data.photoURL || user.photoURL,
           address: data.address || user.employeeInfo.address,
           about: data.about || user.employeeInfo.about,
         },
@@ -44,10 +42,9 @@ const UpdateProfile = ({ setUpdateShow }) => {
           if (result.acknowledged) {
             updateProfile(auth.currentUser, {
               displayName: data.name || user.displayName,
-              photoURL: data.photoURL || user.photoURL,
             }).then(() => {
               alert("Update successfully");
-              setUser({ ...user, ...updateData, photoURL: data.photoURL });
+              setUser({ ...user, ...updateData });
               setLoading(false);
               setUpdateShow(false);
             });
@@ -70,13 +67,7 @@ const UpdateProfile = ({ setUpdateShow }) => {
             {...register("name")}
           />
           <br />
-          <label>Photo URL:</label>
-          <input
-            className="border-2 border-black w-full my-3 p-2 text-2xl rounded-md "
-            defaultValue={user?.photoURL}
-            {...register("photoURL")}
-          />
-          <br />
+
           <label>Address:</label>
           <input
             className="border-2 border-black w-full my-3 p-2 text-2xl rounded-md "

@@ -19,10 +19,7 @@ const UpdateEmployee = () => {
 
   const onSubmit = (data) => {
     const employeeInfo = {
-      role: {
-        roleId: data.roleId || singleEmployee.employeeInfo.role.roleId,
-        roleDes: data.roleDes || singleEmployee.employeeInfo.role.roleDes,
-      },
+      roleId: data.roleId || singleEmployee.employeeInfo.roleId,
       employeeId: data.employeeId || singleEmployee.employeeInfo.employeeId,
       about: data.about || singleEmployee.employeeInfo.about,
       joiningDate: data.joiningDate || singleEmployee.employeeInfo.joiningDate,
@@ -37,6 +34,7 @@ const UpdateEmployee = () => {
         ...employeeInfo,
       },
     };
+    console.log(data);
     const isUpdate = window.confirm("Are you sure update user data?");
     if (isUpdate) {
       fetch(`http://localhost:5000/users/${user_id}`, {
@@ -91,20 +89,14 @@ const UpdateEmployee = () => {
             />
             <br />
             <label>Role ID:</label>
-            <input
-              className="border-2 border-black w-full my-3 p-2 text-2xl rounded-md"
-              defaultValue={singleEmployee?.employeeInfo?.role?.roleId}
-              placeholder="Role ID"
-              {...register("roleId")}
-            />
-            <label>Role Description:</label>
-            <input
-              className="border-2 border-black w-full my-3 p-2 text-2xl rounded-md"
-              defaultValue={singleEmployee?.employeeInfo?.role?.roleDes}
-              placeholder="Role Description"
-              {...register("roleDes")}
-            />
-
+            <div>
+              <select name="" id="" {...register("roleId")}>
+                <option value="101">101</option>
+                <option value="102">102</option>
+                <option value="103">103</option>
+                <option value="104">104</option>
+              </select>
+            </div>
             <br />
             <label>Employee ID:</label>
             <input

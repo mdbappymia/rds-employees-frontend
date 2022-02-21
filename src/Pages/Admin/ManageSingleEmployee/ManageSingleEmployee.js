@@ -1,8 +1,16 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 const ManageSingleEmployee = ({ employee }) => {
+  const [roleDes, setRoleDes] = useState("");
   const { displayName, email, employeeInfo, user_id, profileImage } = employee;
+  useEffect(() => {
+    fetch(`http://localhost:5000/roles/${employeeInfo.roleId}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setRoleDes(data.roleDes);
+      });
+  }, [employeeInfo.roleId]);
   return (
     <div className=" border-2 my-3 p-4">
       <div className="lg:flex justify-between">
@@ -15,8 +23,7 @@ const ManageSingleEmployee = ({ employee }) => {
           <h1>Name: {displayName}</h1>
           <h2>Email: {email}</h2>
           <h1>Employee Id: {employeeInfo?.employeeId}</h1>
-          <h1>Role ID: {employeeInfo?.role?.roleId}</h1>
-          <h1>Role Description: {employeeInfo?.role.roleDes}</h1>
+          <h1>Role Description: {roleDes}</h1>
           <h1>NID no: {employeeInfo?.nid}</h1>
         </div>
         <div className="right lg:w-2/3 ">

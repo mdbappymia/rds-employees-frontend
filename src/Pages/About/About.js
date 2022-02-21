@@ -6,7 +6,7 @@ const About = () => {
       <h1 className="text-center text-5xl uppercase font-bold my-3 p-3 hover:bg-gray-400 border-4">
         This is about page
       </h1>
-      <p>
+      <p className="text-xl">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo
         cupiditate, odio veritatis beatae iure dolores minus eligendi nobis
         culpa nesciunt quidem harum in non dicta animi iste voluptatum vero
