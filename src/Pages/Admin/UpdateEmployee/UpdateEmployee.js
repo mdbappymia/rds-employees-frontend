@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import useStore from "../../../hooks/useStore";
 
 const UpdateEmployee = () => {
   const [singleEmployee, setSingleEmployee] = useState({});
   const { user_id } = useParams();
   const { employees, setEmployees, token } = useStore();
-
+  const navigate = useNavigate();
   useEffect(() => {
     fetch(`http://localhost:5000/users/${user_id}`)
       .then((res) => res.json())
@@ -34,7 +34,7 @@ const UpdateEmployee = () => {
         ...employeeInfo,
       },
     };
-    console.log(data);
+
     const isUpdate = window.confirm("Are you sure update user data?");
     if (isUpdate) {
       fetch(`http://localhost:5000/users/${user_id}`, {
@@ -57,6 +57,7 @@ const UpdateEmployee = () => {
             }
             setEmployees(updateEmployeeArr);
             alert("Update successfully");
+            navigate("/adminDashboard/employeeManagement");
           }
         });
     }

@@ -112,6 +112,9 @@ const Login = () => {
               <>
                 <label>Name: *</label>
                 <input
+                  autoComplete={`${
+                    navigator.userAgent.indexOf("Edg") > -1 ? "0" : "off"
+                  }`}
                   className="border-2 border-black w-full my-3 p-2 text-2xl rounded-md"
                   placeholder="Your Name"
                   {...register("name", { required: true })}
@@ -130,16 +133,6 @@ const Login = () => {
                   onChange={(e) => setProfileImage(e.target.files[0])}
                   // {...register("image")}
                 />
-                <br />
-                <label>Role Id: *</label>
-                <input
-                  className="border-2 border-black w-full my-3 p-2 text-2xl rounded-md"
-                  placeholder="Role ID"
-                  {...register("roleId", { required: true })}
-                />
-                {errors.roleId && (
-                  <span className="text-red-500">This field is required</span>
-                )}
                 <br />
               </>
             )}

@@ -1,14 +1,27 @@
-import React, { useState } from "react";
+import { updateEmail } from "firebase/auth";
+import React, { useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
 import useStore from "../../../hooks/useStore";
 import UpdateProfile from "../UpdateProfile/UpdateProfile";
 import "./ProfileHome.css";
 
 const ProfileHome = () => {
-  const { user, isLoading, setUserReload, userReload } = useStore();
+  const { user, isLoading, setUserReload, userReload, auth, token } =
+    useStore();
   const [updateShow, setUpdateShow] = useState(false);
   const [uploadInputShow, setUploadInputShow] = useState(false);
+  const [isUpdateEmail, setIsUpdateEmail] = useState(false);
+  const [updateEmailText, setUpdateEmailText] = useState("");
   const [uploadedImage, setUploadedImage] = useState(null);
+
+  const [roleDes, setRoleDes] = useState("");
+  useEffect(() => {
+    fetch(`http://localhost:5000/roles/${user.employeeInfo?.roleId}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setRoleDes(data.roleDes);
+      });
+  }, [user.employeeInfo?.roleId]);
 
   if (!isLoading && !user.email) {
     return <Navigate to="/login" />;
@@ -33,6 +46,37 @@ const ProfileHome = () => {
           setUserReload(!userReload);
         }
       });
+  };
+  const handleEmailUpdate = () => {
+    if (updateEmailText === "") {
+      setIsUpdateEmail(false);
+      return;
+    }
+    const isSubmit = window.confirm("Are you sure?");
+    if (isSubmit) {
+      updateEmail(auth.currentUser, updateEmailText)
+        .then(() => {
+          fetch(`http://localhost:5000/users/${user.uid}`, {
+            method: "PUT",
+            headers: {
+              "content-type": "application/json",
+              authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify({ email: updateEmailText }),
+          })
+            .then((res) => res.json())
+            .then((result) => {
+              if (result.acknowledged) {
+                alert("Email Change Successfully");
+                setIsUpdateEmail(false);
+                setUpdateEmailText("");
+              }
+            });
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
   };
   return (
     <div className="container mx-auto px-4 profile-home-container">
@@ -81,9 +125,40 @@ const ProfileHome = () => {
               </span>
             </div>
             <div className="contact-me text-white text-left ml-10 font-bold text-lg">
-              <span>Contact Me</span>
+              <span>Contact</span>
             </div>
-            <h4 className="text-gray-300">{user?.email}</h4>
+            <div className="flex email-container">
+              <h4 className="text-gray-300">{user?.email}</h4>
+              <div
+                onClick={() => setIsUpdateEmail(!isUpdateEmail)}
+                className="hidden email-update-pen"
+              >
+                <i className="fa fa-pen px-3 pb-2 m-0"></i>
+              </div>
+              {isUpdateEmail && (
+                <div className="absolute bg-white px-4 rounded-xl">
+                  <input
+                    className="text-black p-2 "
+                    defaultValue={updateEmailText || user.email}
+                    onChange={(e) => setUpdateEmailText(e.target.value)}
+                    placeholder="example@email.com"
+                    type="email"
+                  />{" "}
+                  <button
+                    onClick={handleEmailUpdate}
+                    className="bg-indigo-500 hover:bg-indigo-800 p-2"
+                  >
+                    update
+                  </button>
+                  <span
+                    onClick={() => setIsUpdateEmail(false)}
+                    className="bg-red-500 ml-3 px-2 cursor-pointer"
+                  >
+                    &times;
+                  </span>
+                </div>
+              )}
+            </div>
             <div>
               <button
                 onClick={() => setUpdateShow(!updateShow)}
@@ -121,12 +196,8 @@ const ProfileHome = () => {
                   <p>{user?.employeeInfo?.employeeId}</p>
                 </div>
                 <div className="data">
-                  <h4>Role ID</h4>
-                  <p>{user?.employeeInfo?.role?.roleId || "empty"}</p>
-                </div>
-                <div className="data">
                   <h4>Role Description</h4>
-                  <p>{user?.employeeInfo?.role?.roleDes || "empty"}</p>
+                  <p>{roleDes || "empty"}</p>
                 </div>
                 <div className="data">
                   <h4>Joining Date</h4>

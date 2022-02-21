@@ -1,7 +1,15 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 const Employee = ({ employee }) => {
+  const [roleDes, setRoleDes] = useState("");
+  useEffect(() => {
+    fetch(`http://localhost:5000/roles/${employee.employeeInfo.roleId}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setRoleDes(data.roleDes);
+      });
+  }, [employee.employeeInfo.roleId]);
   return (
     <div className="m-3 hover:shadow-2xl bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
       <div className="flex justify-end px-4 pt-4"></div>
@@ -15,7 +23,7 @@ const Employee = ({ employee }) => {
           {employee?.displayName}
         </h3>
         <span className="text-sm text-gray-500 dark:text-gray-400">
-          {employee?.employeeInfo?.role?.roleDes}
+          {roleDes || "_"}
         </span>
         <div className="flex mt-4 space-x-3 lg:mt-6">
           <Link

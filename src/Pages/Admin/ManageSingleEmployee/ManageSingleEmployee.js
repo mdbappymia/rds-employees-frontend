@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 const ManageSingleEmployee = ({ employee }) => {
-  const [roleDes, setRoleDes] = useState("");
   const { displayName, email, employeeInfo, user_id, profileImage } = employee;
+  const [roleDes, setRoleDes] = useState("");
   useEffect(() => {
     fetch(`http://localhost:5000/roles/${employeeInfo.roleId}`)
       .then((res) => res.json())
@@ -36,19 +36,7 @@ const ManageSingleEmployee = ({ employee }) => {
           <h1>Salary: {employeeInfo?.salary} TK</h1>
           <p>About Info:</p>
           <p className=" font-thin text-gray-700 text-xl">
-            {employeeInfo?.about} Lorem ipsum dolor sit amet consectetur
-            adipisicing elit. Quas, accusantium quasi tempore itaque eius
-            deleniti molestias explicabo quis, deserunt repudiandae maxime,
-            exercitationem hic quisquam corporis quia doloribus saepe voluptas.
-            Enim similique odit magni officiis cumque. Perferendis quae earum
-            expedita numquam veritatis laboriosam, voluptatibus debitis aliquam
-            ex officiis! Voluptas, libero dolore. Lorem ipsum dolor sit amet,
-            consectetur adipisicing elit. Aliquam nobis id totam odit
-            asperiores, culpa, repellendus iste nam eaque sapiente, obcaecati
-            quia repudiandae? Cum veniam molestias vitae repellendus nisi
-            voluptatem provident voluptas. In, dolore? Quisquam eveniet fugiat
-            aut voluptatibus est rem earum id voluptatem, voluptas voluptate
-            ratione, labore, voluptates odit!
+            {employeeInfo?.about}
           </p>
         </div>
       </div>

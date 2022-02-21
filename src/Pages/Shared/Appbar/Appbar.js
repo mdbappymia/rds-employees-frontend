@@ -93,7 +93,7 @@ const AppBar = () => {
               {user.email ? (
                 <button
                   onClick={logOut}
-                  className="px-5 py-3 bg-sky-800 rounded-lg flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
+                  className="px-5 py-3 bg-red-800 rounded-lg flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
                 >
                   <span>Log Out</span>
                   <i className="ml-2 fas fa-sign-out-alt text-lg leading-lg text-white opacity-75"></i>

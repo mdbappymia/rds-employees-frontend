@@ -99,3 +99,6 @@
   display: block;
   opacity: 1;
 }
+.email-container:hover .email-update-pen {
+  display: block;
+}
