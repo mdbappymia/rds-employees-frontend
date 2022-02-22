@@ -82,7 +82,6 @@ const Login = () => {
   if (user.email) {
     return <Navigate to="/" />;
   }
-  // console.log(navigator.userAgent.indexOf("Edg"));
 
   return (
     <>
@@ -131,7 +130,6 @@ const Login = () => {
                   accept="image/*"
                   className="py-5"
                   onChange={(e) => setProfileImage(e.target.files[0])}
-                  // {...register("image")}
                 />
                 <br />
               </>

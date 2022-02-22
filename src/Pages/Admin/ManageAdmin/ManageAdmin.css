@@ -2,3 +2,13 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
 }
+@media only screen and (max-width: 980px) {
+  .user-container {
+    grid-template-columns: 1fr;
+  }
+}
+@media only screen and (max-width: 666px) {
+  .user-container {
+    display: block;
+  }
+}

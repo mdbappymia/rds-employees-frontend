@@ -4,9 +4,9 @@ import useFirebase from "./useFirebase";
 const useData = () => {
   const [employees, setEmployees] = useState([]);
   const [pendingEmployees, setPendingEmployees] = useState([]);
+  const [empReload, setEmpReload] = useState(false);
   const { token } = useFirebase();
   const useToken = token;
-  // localStorage.getItem("token") ||
   // get all employees
   useEffect(() => {
     fetch("http://localhost:5000/users", {
@@ -16,7 +16,7 @@ const useData = () => {
     })
       .then((res) => res.json())
       .then((data) => setEmployees(data));
-  }, [useToken, token]);
+  }, [useToken, token, empReload]);
 
   useEffect(() => {
     fetch(`http://localhost:5000/user?approveStatus=Pending`, {
@@ -58,6 +58,8 @@ const useData = () => {
     loggedInEmployees,
     rejected,
     setRejected,
+    empReload,
+    setEmpReload,
   };
 };
 

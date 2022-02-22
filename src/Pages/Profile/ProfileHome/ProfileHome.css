@@ -5,6 +5,7 @@
 .update-profile-component {
   position: absolute;
   top: 0;
+  left: 0;
   width: 100%;
   padding: 0 200px;
   background-color: aliceblue;
@@ -34,14 +35,6 @@
 }
 .wrapper .left .basic_info .address {
   font-size: 0.9rem;
-}
-.wrapper .left h4 {
-  text-align: start;
-  margin-left: 10%;
-}
-
-.wrapper .left h4 {
-  margin-bottom: 10px;
 }
 
 .wrapper .right {
@@ -101,4 +94,17 @@
 }
 .email-container:hover .email-update-pen {
   display: block;
+}
+
+@media only screen and (max-width: 920px) {
+  .update-profile-component {
+    padding: 0 50px;
+    width: 100%;
+  }
+}
+@media only screen and (max-width: 666px) {
+  .update-profile-component {
+    padding: 0 20px;
+    width: 100%;
+  }
 }

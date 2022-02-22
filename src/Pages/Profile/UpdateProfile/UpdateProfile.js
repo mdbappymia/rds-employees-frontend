@@ -58,7 +58,7 @@ const UpdateProfile = ({ setUpdateShow }) => {
         Update Profile
       </h1>
       <div>
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form autoComplete="off" onSubmit={handleSubmit(onSubmit)}>
           <label>Name:</label>
           <input
             className="border-2 border-black w-full my-3 p-2 text-2xl rounded-md "

@@ -38,7 +38,7 @@ const ResetPassword = () => {
         ) : (
           <div className="my-3"></div>
         )}
-        <form onSubmit={handleSubmit} className="w-full">
+        <form autoComplete="off" onSubmit={handleSubmit} className="w-full">
           <label>Enter your email</label>
           <br />
           <input

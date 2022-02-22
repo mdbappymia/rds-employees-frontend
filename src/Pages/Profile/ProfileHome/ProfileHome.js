@@ -6,8 +6,16 @@ import UpdateProfile from "../UpdateProfile/UpdateProfile";
 import "./ProfileHome.css";
 
 const ProfileHome = () => {
-  const { user, isLoading, setUserReload, userReload, auth, token } =
-    useStore();
+  const {
+    user,
+    isLoading,
+    setUserReload,
+    userReload,
+    auth,
+    token,
+    empReload,
+    setEmpReload,
+  } = useStore();
   const [updateShow, setUpdateShow] = useState(false);
   const [uploadInputShow, setUploadInputShow] = useState(false);
   const [isUpdateEmail, setIsUpdateEmail] = useState(false);
@@ -42,8 +50,8 @@ const ProfileHome = () => {
         if (result.acknowledged) {
           alert("Update successfully");
           setUploadInputShow(false);
-          setUploadedImage(null);
           setUserReload(!userReload);
+          setEmpReload(!empReload);
         }
       });
   };
@@ -70,6 +78,8 @@ const ProfileHome = () => {
                 alert("Email Change Successfully");
                 setIsUpdateEmail(false);
                 setUpdateEmailText("");
+                setUserReload(!userReload);
+                setEmpReload(!empReload);
               }
             });
         })
@@ -84,11 +94,11 @@ const ProfileHome = () => {
         Profile
       </h1>
       <div className="container px-4 mx-auto">
-        <div className="wrapper lg:grid">
+        <div className="wrapper  lg:grid">
           <div className="left">
             <div className="relative mx-auto lg:w-2/3 profile-image-div ">
               <img
-                className=" rounded-full profile-image bg-amber-300"
+                className=" rounded-full profile-image bg-amber-300 block m-auto"
                 src={`data:image/jpeg;base64,${user.profileImage}`}
                 alt="user"
               />
@@ -124,21 +134,24 @@ const ProfileHome = () => {
                 {user?.employeeInfo?.address || "empty"}
               </span>
             </div>
-            <div className="contact-me text-white text-left ml-10 font-bold text-lg">
+            <div className="contact-me text-white text-left font-bold text-lg">
               <span>Contact</span>
             </div>
-            <div className="flex email-container">
+            <div className="flex email-container ">
               <h4 className="text-gray-300">{user?.email}</h4>
-              <div
-                onClick={() => setIsUpdateEmail(!isUpdateEmail)}
-                className="hidden email-update-pen"
-              >
-                <i className="fa fa-pen px-3 pb-2 m-0"></i>
-              </div>
+              {user.approveStatus === "Approved" && (
+                <div
+                  onClick={() => setIsUpdateEmail(!isUpdateEmail)}
+                  className="hidden email-update-pen"
+                >
+                  <i className="fa fa-pen px-3 pb-2 m-0"></i>
+                </div>
+              )}
               {isUpdateEmail && (
                 <div className="absolute bg-white px-4 rounded-xl">
                   <input
                     className="text-black p-2 "
+                    autoComplete="off"
                     defaultValue={updateEmailText || user.email}
                     onChange={(e) => setUpdateEmailText(e.target.value)}
                     placeholder="example@email.com"
@@ -159,7 +172,8 @@ const ProfileHome = () => {
                 </div>
               )}
             </div>
-            <div>
+
+            <div className="md:text-left">
               <button
                 onClick={() => setUpdateShow(!updateShow)}
                 className="bg-indigo-800 text-white px-3 py-2 my-4 font-bold hover:bg-indigo-600 rounded-md"

@@ -9,3 +9,8 @@
   display: grid;
   grid-template-columns: 30% 70%;
 }
+@media only screen and (max-width: 666px) {
+  .profile-part-container {
+    display: block;
+  }
+}

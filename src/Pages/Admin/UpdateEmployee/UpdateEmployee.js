@@ -68,8 +68,8 @@ const UpdateEmployee = () => {
         Update user Info
       </h2>
       <div className="py-5 mx-2">
-        <div className=" w-2/3 m-auto">
-          <form onSubmit={handleSubmit(onSubmit)}>
+        <div className=" p-3 lg:w-2/3 m-auto">
+          <form autoComplete="off" onSubmit={handleSubmit(onSubmit)}>
             <label>Name:</label>
             <input
               disabled
