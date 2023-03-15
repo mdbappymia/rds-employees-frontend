@@ -55,6 +55,7 @@ const ProfileHome = () => {
         }
       });
   };
+  console.log(user);
   const handleEmailUpdate = () => {
     if (updateEmailText === "") {
       setIsUpdateEmail(false);
@@ -86,6 +87,7 @@ const ProfileHome = () => {
         .catch((error) => {
           console.log(error);
         });
+      console.log("hello");
     }
   };
   return (

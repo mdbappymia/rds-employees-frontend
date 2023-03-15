@@ -7,6 +7,7 @@ import {
   updateProfile,
   signOut,
   getIdToken,
+  updateEmail,
 } from "firebase/auth";
 import initializeAuthentication from "../Pages/Authentication/Firebase/firebase.init";
 
@@ -133,6 +134,7 @@ const useFirebase = () => {
     setUser,
     createUserUsingEmailAndPassword,
     signInUsingEmailAndPassword,
+    updateEmail,
     isLoading,
     logOut,
     loginStatusChange,
